@@ -1,33 +1,4 @@
-var app = angular.module('immiviz', [
-    'ngRoute',
-    'google-maps'
-]);
-
-app.config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-        .when('/', {
-            controller: 'MapCtrl',
-            templateUrl: '/map/main.html'
-        })
-        .when('/contact', {
-            controller: 'ContactCtrl',
-            templateUrl: '/contact/main.html'
-        })
-        .otherwise('/');
-}]);
-
-app.controller('NavCtrl', ['$scope', function ($scope) {
-    $scope.navbarItems = [
-        {
-            text: 'Map',
-            url: ''
-        },
-        {
-            text: 'Contact',
-            url: 'contact'
-        }
-    ];
-}]);;/**!
+/**!
  * The MIT License
  * 
  * Copyright (c) 2010-2012 Google, Inc. http://angularjs.org
@@ -575,15 +546,4 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
       }
     };
   }]);  
-}());;app.controller('MapCtrl', ['$scope', function ($scope) {
-	angular.extend($scope, {
-		center: {
-			latitude: 38.8951, // initial map center latitude
-			longitude: -77.0367, // initial map center longitude
-		},
-		markers: [], // an array of markers,
-		zoom: 8, // the zoom level
-	});
-}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
-    
-}]);
+}());

@@ -1,5 +1,6 @@
 var app = angular.module('immiviz', [
-    'ngRoute'
+    'ngRoute',
+    'google-maps'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
