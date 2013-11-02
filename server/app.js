@@ -25,7 +25,7 @@ if ('development' == app.get('env')) {
 
 app.get('/api/map', map.main);
 app.get('/api/contact', contact.main);
-app.get('*', routes.index);
+app.get('/', routes.index);
 
 
 http.createServer(app).listen(app.get('port'), function(){
