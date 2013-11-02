@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         less: {
             main: {
                 src: [
-                '../client/bower_components/bootstrap/less/**/bootstrap.less'
+                    '../client/src/less/main.less'
                 ],
                 dest: '../client/dist/main.css'
             }
