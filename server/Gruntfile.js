@@ -11,7 +11,21 @@ module.exports = function (grunt) {
                     '../client/bower_components/d3/d3.min.js',
                     '../client/bower_components/angular/angular.min.js',
                     '../client/bower_components/angular-route/angular-route.min.js',
-                    '../client/bower_components/angular-resource/angular-resource.min.js'
+                    '../client/bower_components/angular-resource/angular-resource.min.js',
+                    '../client/bower_components/bootstrap/js/affix.js',
+                    '../client/bower_components/bootstrap/js/alert.js',
+                    '../client/bower_components/bootstrap/js/button.js',
+                    '../client/bower_components/bootstrap/js/carousel.js',
+                    '../client/bower_components/bootstrap/js/collapse.js',
+                    '../client/bower_components/bootstrap/js/dropdown.js',
+                    '../client/bower_components/bootstrap/js/model.js',
+                    '../client/bower_components/bootstrap/js/tooltip.js',
+                    '../client/bower_components/bootstrap/js/popover.js',
+                    '../client/bower_components/bootstrap/js/scrollspy.js',
+                    '../client/bower_components/bootstrap/js/tab.js',
+                    '../client/bower_components/bootstrap/js/transition.js'
+                    
+                    
                 ],
                 dest: '../client/dist/libs.js'
             },
@@ -20,7 +34,7 @@ module.exports = function (grunt) {
                     '../client/src/main.js',
                     '../client/src/directives/**/*.js',
                     '../client/src/map/**/*.js',
-                    '../client/src/contact/**/*.js'
+                    '../client/src/about/**/*.js'
                 ],
                 dest: '../client/dist/main.js'
             }
@@ -39,7 +53,7 @@ module.exports = function (grunt) {
                 cwd: '../client/src/',
                 expand: true,
                 src: [
-                    '**'
+                    '**/*.html'
                 ],
                 dest: '../client/dist/'
             }

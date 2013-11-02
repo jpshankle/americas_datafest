@@ -8,9 +8,9 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'MapCtrl',
             templateUrl: '/map/main.html'
         })
-        .when('/contact', {
-            controller: 'ContactCtrl',
-            templateUrl: '/contact/main.html'
+        .when('/about', {
+            controller: 'AboutCtrl',
+            templateUrl: '/about/main.html'
         })
         .otherwise('/');
 }]);
@@ -22,8 +22,8 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
             url: ''
         },
         {
-            text: 'Contact',
-            url: 'contact'
+            text: 'About',
+            url: 'about'
         }
     ];
 }]);
