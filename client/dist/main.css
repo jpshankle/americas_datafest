@@ -5954,6 +5954,11 @@ td.visible-print {
     display: none !important;
   }
 }
+html,
+body,
+.map-parent {
+  height: 100%;
+}
 body {
-  padding: 70px;
+  padding-top: 51px;
 }
