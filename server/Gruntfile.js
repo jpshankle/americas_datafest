@@ -38,11 +38,23 @@ module.exports = function (grunt) {
                 ],
                 dest: '../client/dist/'
             }
+        },
+        watch: {
+            srcfiles: {
+                files: '../client/src/**/*',
+                tasks: [
+                    'default'
+                ],
+                options: {
+                    spawn: false
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     
     grunt.registerTask('default', ['copy','concat','less']);
 };
