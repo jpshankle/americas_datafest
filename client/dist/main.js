@@ -1,16 +1,22 @@
 var app = angular.module('immiviz', [
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
-        .when('/', {
-            controller: MainCtrl,
-            templateUrl: 'main.html'
-        })
         .otherwise('/');
 }]);
 
-function MainCtrl () {
-    
-} 
+app.controller('NavCtrl', ['$scope', function ($scope) {
+    $scope.navbarItems = [
+        {
+            text: 'Actions 1',
+            url: '/#/action1'
+        },
+        {
+            text: 'Actions 2',
+            url: '/#/action2'
+        }
+    ];
+}]);
