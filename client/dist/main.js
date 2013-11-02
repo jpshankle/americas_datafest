@@ -9,9 +9,9 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'MapCtrl',
             templateUrl: '/map/main.html'
         })
-        .when('/contact', {
-            controller: 'ContactCtrl',
-            templateUrl: '/contact/main.html'
+        .when('/about', {
+            controller: 'AboutCtrl',
+            templateUrl: '/about/main.html'
         })
         .otherwise('/');
 }]);
@@ -23,8 +23,8 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
             url: ''
         },
         {
-            text: 'Contact',
-            url: 'contact'
+            text: 'About',
+            url: 'about'
         }
     ];
 }]);;/**!
@@ -584,6 +584,4 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 		markers: [], // an array of markers,
 		zoom: 8, // the zoom level
 	});
-}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
-    
 }]);
