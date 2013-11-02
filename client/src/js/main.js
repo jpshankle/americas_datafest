@@ -1,6 +1,6 @@
 var app = angular.module('immiviz', [
-    
-])
+    'ngRoute'
+]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -13,4 +13,4 @@ app.config(['$routeProvider', function($routeProvider) {
 
 function MainCtrl () {
     
-}
+} 

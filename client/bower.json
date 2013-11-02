@@ -19,10 +19,7 @@
     "angular": "~1.2.*",
     "d3": "~3.3.9",
     "bootstrap": "~3.0.1",
-    "angular-resource": "~1.0.8",
+    "angular-resource": "~1.2.*",
     "angular-route": "~1.2.0-rc.3"
-  },
-  "resolutions": {
-    "angular": "1.2.0-rc.3"
   }
 }

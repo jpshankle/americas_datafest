@@ -9,7 +9,9 @@ module.exports = function (grunt) {
                 src: [
                     '../client/bower_components/jquery/jquery.min.js',
                     '../client/bower_components/d3/d3.min.js',
-                    '../client/bower_components/angular/angular.min.js'
+                    '../client/bower_components/angular/angular.min.js',
+                    '../client/bower_components/angular-route/angular-route.min.js',
+                    '../client/bower_components/angular-resource/angular-resource.min.js'
                 ],
                 dest: '../client/dist/libs.js'
             },
