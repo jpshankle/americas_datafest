@@ -1,0 +1,22 @@
+{
+  "name": "americas_datafest_bower",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jpshankle/americas_datafest",
+  "authors": [
+    "Jeremy Shankle <jshankle@skylinenet.net>"
+  ],
+  "description": "for the americas datafest app",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.*",
+    "d3": "~3.3.9"
+  }
+}
