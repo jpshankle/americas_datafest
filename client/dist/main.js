@@ -584,4 +584,6 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 		markers: [], // an array of markers,
 		zoom: 8, // the zoom level
 	});
+}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
+    
 }]);
