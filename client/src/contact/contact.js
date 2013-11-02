@@ -1,3 +1,3 @@
-app.controller('ContactCtrl', ['$scope', function ($scope, $http) {
+app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);

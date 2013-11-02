@@ -10,7 +10,7 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/contact', {
             controller: 'ContactCtrl',
-            templateUrl: '/map/main.html'
+            templateUrl: '/contact/main.html'
         })
         .otherwise('/');
 }]);

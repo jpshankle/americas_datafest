@@ -10,7 +10,7 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .when('/contact', {
             controller: 'ContactCtrl',
-            templateUrl: '/map/main.html'
+            templateUrl: '/contact/main.html'
         })
         .otherwise('/');
 }]);
@@ -28,6 +28,6 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
     ];
 }]);;app.controller('MapCtrl', ['$scope', function ($scope) {
 
-}]);;app.controller('ContactCtrl', ['$scope', function ($scope, $http) {
+}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);
