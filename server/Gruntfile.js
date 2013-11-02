@@ -18,6 +18,7 @@ module.exports = function (grunt) {
             main: {
                 src: [
                     '../client/src/main.js',
+                    '../client/src/directives/**/*.js',
                     '../client/src/map/**/*.js',
                     '../client/src/contact/**/*.js'
                 ],
