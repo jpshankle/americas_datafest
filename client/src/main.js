@@ -26,8 +26,4 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
             url: 'contact'
         }
     ];
-}]);;app.controller('MapCtrl', ['$scope', function ($scope) {
-
-}]);;app.controller('ContactCtrl', ['$scope', function ($scope, $http) {
-    
 }]);

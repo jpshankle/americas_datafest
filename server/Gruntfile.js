@@ -17,7 +17,9 @@ module.exports = function (grunt) {
             },
             main: {
                 src: [
-                    '../client/src/js/**/*.js'
+                    '../client/src/main.js',
+                    '../client/src/map/**/*.js',
+                    '../client/src/contact/**/*.js'
                 ],
                 dest: '../client/dist/main.js'
             }
@@ -25,7 +27,7 @@ module.exports = function (grunt) {
         less: {
             main: {
                 src: [
-                    '../client/src/less/main.less'
+                    '../client/src/main.less'
                 ],
                 dest: '../client/dist/main.css'
             }

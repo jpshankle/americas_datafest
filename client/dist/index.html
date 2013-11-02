@@ -20,13 +20,13 @@
         </div>
         <div class="collapse navbar-collapse" id="app-top-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-repeat="navItem in navbarItems"><a href="{{navItem.url}}">{{navItem.text}}</a></a></li>
+                <li ng-repeat="navItem in navbarItems"><a href="/#/{{navItem.url}}">{{navItem.text}}</a></a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">{{'Hello, World!!!!'}}</div>
+            <div class="col-md-12" ng-view></div>
         </div>
     </div>    
     <script src="libs.js"></script>
