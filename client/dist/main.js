@@ -616,6 +616,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 			function makeShitHappen(){
 
+
 				d3.json("world-countries.json", function(collection) {
 				  feature = svg.selectAll("path")
 				    .data(collection.features)
@@ -627,12 +628,12 @@ app.config(['$routeProvider', function($routeProvider) {
 				  feature.append("id")
 				      .text(function(d) { return d.id; });
 				  feature.on("click", function(){
-				  	if (activeFeature !== null) {
+				  	if (activeFeature !== null) { 
 				  		activeFeature.style("fill", "#8399b0");
 				  	}
 				  	activeFeature = d3.select(this);
 				  	//console.log(scope);
-				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent});
+				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent, fullName: activeFeature.select("title")[0][0].textContent});
 				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
 				  	activeFeature.style("fill", "magenta");
 				  });
@@ -714,9 +715,6 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);;app.directive('ofRickshaw', [function () {
 	return {
 		restrict: 'E',
-		scope: {
-			lines: '='
-		},
 		templateUrl: '/directives/ofrickshaw-directive/view.html',
 		link: function (scope, element, attrs) {
 			var margin = {
@@ -790,17 +788,15 @@ app.config(['$routeProvider', function($routeProvider) {
     });
 
     $scope.changeCountry = function (selectedCountry) {
-        console.log(selectedCountry);
-        $scope.selectedCountry = {
-            name: selectedCountry.name,
-            fullName: $scope.countries[c].properties.name
-        };
+        //console.log(selectedCountry);
+        $scope.selectedCountry = selectedCountry;
+        $scope.lineData = allCountriesData[selectedCountry.name];
+        $scope.$apply();
         //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
-        //$scope.lineData = allCountriesData[selectedCountry.name];
+        
     };
-
     $scope.$watch('selectedCountry', function() {
-        console.log($scope.selectedCountry);
+        //console.log($scope.selectedCountry);
     }, true);
 }]);;app.controller('MapCtrl', ['$scope', function ($scope) {
         angular.extend($scope, {

@@ -38,16 +38,14 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
     });
 
     $scope.changeCountry = function (selectedCountry) {
-        console.log(selectedCountry);
-        $scope.selectedCountry = {
-            name: selectedCountry.name,
-            fullName: $scope.countries[c].properties.name
-        };
+        //console.log(selectedCountry);
+        $scope.selectedCountry = selectedCountry;
+        $scope.lineData = allCountriesData[selectedCountry.name];
+        $scope.$apply();
         //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
-        //$scope.lineData = allCountriesData[selectedCountry.name];
+        
     };
-
     $scope.$watch('selectedCountry', function() {
-        console.log($scope.selectedCountry);
+        //console.log($scope.selectedCountry);
     }, true);
 }]);

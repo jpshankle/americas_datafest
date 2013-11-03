@@ -39,6 +39,7 @@ app.directive('d3Globe', [function () {
 
 			function makeShitHappen(){
 
+
 				d3.json("world-countries.json", function(collection) {
 				  feature = svg.selectAll("path")
 				    .data(collection.features)
@@ -50,12 +51,12 @@ app.directive('d3Globe', [function () {
 				  feature.append("id")
 				      .text(function(d) { return d.id; });
 				  feature.on("click", function(){
-				  	if (activeFeature !== null) {
+				  	if (activeFeature !== null) { 
 				  		activeFeature.style("fill", "#8399b0");
 				  	}
 				  	activeFeature = d3.select(this);
 				  	//console.log(scope);
-				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent});
+				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent, fullName: activeFeature.select("title")[0][0].textContent});
 				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
 				  	activeFeature.style("fill", "magenta");
 				  });

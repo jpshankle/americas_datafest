@@ -1,9 +1,6 @@
 app.directive('ofRickshaw', [function () {
 	return {
 		restrict: 'E',
-		scope: {
-			lines: '='
-		},
 		templateUrl: '/directives/ofrickshaw-directive/view.html',
 		link: function (scope, element, attrs) {
 			var margin = {
