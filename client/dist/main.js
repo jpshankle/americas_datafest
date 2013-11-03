@@ -583,7 +583,110 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
       }
     };
   }]);  
-}());;app.directive('ofRickshaw', [function () {
+}());;app.directive('d3Globe', [function () {
+	return {
+		restrict: 'E',
+		transclude: true,
+		scope: {
+			selectedCountry: '='
+		},
+		templateUrl: '/directives/d3line-directive/view.html',
+		link: function (scope, element, attrs) {
+			element.empty();
+			var activeFeature = null;
+			var feature;
+
+			var projection = d3.geo.azimuthal()
+			    .scale(380)
+			    .origin([-71.03,42.37])
+			    .mode("orthographic")
+			    .translate([640, 400]);
+
+			var circle = d3.geo.greatCircle()
+			    .origin(projection.origin());
+
+			// TODO fix d3.geo.azimuthal to be consistent with scale
+			var scale = {
+			  orthographic: 380,
+			  stereographic: 380,
+			  gnomonic: 380,
+			  equidistant: 380 / Math.PI * 2,
+			  equalarea: 380 / Math.SQRT2
+			};
+
+			var path = d3.geo.path()
+			    .projection(projection);
+
+			var svg = d3.select(element[0]).append("svg:svg")
+			    .attr("width", 1280)
+			    .attr("height", 800)
+			    .on("mousedown", mousedown);
+
+			d3.json("world-countries.json", function(collection) {
+			  feature = svg.selectAll("path")
+			    .data(collection.features)
+			    .enter().append("svg:path")
+			    .attr("d", clip);
+
+			  feature.append("svg:title")
+			      .text(function(d) { return d.properties.name; });
+			  feature.append("id")
+			      .text(function(d) { return d.id; });
+			  feature.on("click", function(){
+			  	if (activeFeature !== null) {
+			  		activeFeature.style("fill", "#8399b0");
+			  	}
+			  	activeFeature = d3.select(this);
+			  	scope.selectedCountry = activeFeature.select("id")[0][0].textContent;
+			  	activeFeature.style("fill", "magenta");
+			  });
+			});
+
+			d3.select(window)
+			    .on("mousemove", mousemove)
+			    .on("mouseup", mouseup);
+
+			d3.select("select").on("change", function() {
+			  projection.mode(this.value).scale(scale[this.value]);
+			  refresh(750);
+			});
+
+			var m0,
+			    o0;
+
+			function mousedown() {
+			  m0 = [d3.event.pageX, d3.event.pageY];
+			  o0 = projection.origin();
+			  d3.event.preventDefault();
+			}
+
+			function mousemove() {
+			  if (m0) {
+			    var m1 = [d3.event.pageX, d3.event.pageY],
+			        o1 = [o0[0] + (m0[0] - m1[0]) / 8, o0[1] + (m1[1] - m0[1]) / 8];
+			    projection.origin(o1);
+			    circle.origin(o1)
+			    refresh();
+			  }
+			}
+
+			function mouseup() {
+			  if (m0) {
+			    mousemove();
+			    m0 = null;
+			  }
+			}
+
+			function refresh(duration) {
+			  (duration ? feature.transition().duration(duration) : feature).attr("d", clip);
+			}
+
+			function clip(d) {
+			  return path(circle.clip(d));
+			}
+		}
+	};
+}]);;app.directive('ofRickshaw', [function () {
 	return {
 		restrict: 'E',
 		scope: {
@@ -658,56 +761,45 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 	};
 }]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allgdp = {
-            name: 'GDP',
-            attr: 'gdp',
-            data: {
-                'United States': [],
-                'Mexico': [],
-                'Canada': []
-            }
-    }, allage = {
-        name: 'Age',
-        attr: 'age',
-        data: {
+        allCountriesData = {
+            'United States': [],
+            'Mexico': [],
+            'Canada': []
+        };
 
-        }
-    };
-
-    $scope.countries = [];
-
-    for (c in allgdp.data) {
-        allage.data[c] = [];
-        for (i = 0; i < 99; i++) {
-            year = i < 10 ? '200' : '20';
-            year++;
-            allgdp.data[c][i] = {
-                year: year,
+    for (c in allCountriesData) {
+        for (i = 0; i < 25; i++) {
+            year = i < 10 ? '20' : '200';
+            allCountriesData[c][i] = {
+                year: year + i,
                 gdp: Math.random() * 10000
             };
-            allage.data[c][i] = {
-                year: year,
-                age: i + 5
-            }
         }
-        $scope.countries.push({
-            properties: {
-                name: c
-            }
-        });
     }
 
-    
+    $scope.countries = [
+        {
+            properties: {
+                name: 'United States'
+            }
+        },
+        {
+            properties: {
+                name: 'Mexico'
+            }
+        }
+    ];
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.linesData = [
-            allgdp[selectedCountry],
-            allage[selectedCountry]
-        ];
+        $scope.lineData = allCountriesData[selectedCountry];
     };
 
     $scope.selectedCountry = 'United States';
 
+    $scope.changeCountry($scope.selectedCountry);
+    $scope.$watch('selectedCountry', function() {
+        console.log("Country changed to: %s", $scope.selectedCountry);
+    });
 }]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);
