@@ -578,15 +578,15 @@ app.config(['$routeProvider', function($routeProvider) {
 }());;app.directive('d3Globe', [function () {
 	return {
 		restrict: 'E',
-		transclude: true,
+		templateUrl: '/directives/d3line-directive/view.html',
 		scope: {
 			selectedCountry: '='
 		},
-		templateUrl: '/directives/d3line-directive/view.html',
 		link: function (scope, element, attrs) {
 			element.empty();
 			var activeFeature = null;
 			var feature;
+
 
 			var projection = d3.geo.azimuthal()
 			    .scale(380)
@@ -597,7 +597,7 @@ app.config(['$routeProvider', function($routeProvider) {
 			var circle = d3.geo.greatCircle()
 			    .origin(projection.origin());
 
-			// TODO fix d3.geo.azimuthal to be consistent with scale
+						// TODO fix d3.geo.azimuthal to be consistent with scale
 			var scale = {
 			  orthographic: 380,
 			  stereographic: 380,
@@ -614,34 +614,40 @@ app.config(['$routeProvider', function($routeProvider) {
 			    .attr("height", 800)
 			    .on("mousedown", mousedown);
 
-			d3.json("world-countries.json", function(collection) {
-			  feature = svg.selectAll("path")
-			    .data(collection.features)
-			    .enter().append("svg:path")
-			    .attr("d", clip);
+			function makeShitHappen(){
 
-			  feature.append("svg:title")
-			      .text(function(d) { return d.properties.name; });
-			  feature.append("id")
-			      .text(function(d) { return d.id; });
-			  feature.on("click", function(){
-			  	if (activeFeature !== null) {
-			  		activeFeature.style("fill", "#8399b0");
-			  	}
-			  	activeFeature = d3.select(this);
-			  	scope.selectedCountry = activeFeature.select("id")[0][0].textContent;
-			  	activeFeature.style("fill", "magenta");
-			  });
-			});
+				d3.json("world-countries.json", function(collection) {
+				  feature = svg.selectAll("path")
+				    .data(collection.features)
+				    .enter().append("svg:path")
+				    .attr("d", clip);
 
-			d3.select(window)
-			    .on("mousemove", mousemove)
-			    .on("mouseup", mouseup);
+				  feature.append("svg:title")
+				      .text(function(d) { return d.properties.name; });
+				  feature.append("id")
+				      .text(function(d) { return d.id; });
+				  feature.on("click", function(){
+				  	if (activeFeature !== null) {
+				  		activeFeature.style("fill", "#8399b0");
+				  	}
+				  	activeFeature = d3.select(this);
+				  	//console.log(scope);
+				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent});
+				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
+				  	activeFeature.style("fill", "magenta");
+				  });
+				});
 
-			d3.select("select").on("change", function() {
-			  projection.mode(this.value).scale(scale[this.value]);
-			  refresh(750);
-			});
+				d3.select(window)
+				    .on("mousemove", mousemove)
+				    .on("mouseup", mouseup);
+
+				d3.select("select").on("change", function() {
+				  projection.mode(this.value).scale(scale[this.value]);
+				  refresh(750);
+				});
+
+			}
 
 			var m0,
 			    o0;
@@ -676,6 +682,8 @@ app.config(['$routeProvider', function($routeProvider) {
 			function clip(d) {
 			  return path(circle.clip(d));
 			}
+
+			makeShitHappen();
 		}
 	};
 }]);;app.directive('marilu', [function () {
@@ -717,106 +725,83 @@ app.config(['$routeProvider', function($routeProvider) {
 				bottom: 30,
 				left: 50
 			}
+			console.log(scope.lines);
 			scope.$watchCollection('lines', function (newValues, oldValues) {
 				if (typeof newValues === 'object') {
 					element.empty();
-
-					var scale1 = d3.scale.linear().domain(d3.extent(newValues, function (value) {
-							return value[scope.lines[0]['attr']];
-						})),
-						scale2 = d3.scale.linear().domain(d3.extent(newValues, function (value) {
-							return value[scope.lines[1]['attr']];
-						}));
-					var graph = new Rickshaw.Graph({
-						element: element[0],
-						width: 400,
-						renderer: 'line',
-						series: [
-							{
-								color: 'steelblue',
-								data: scope.lines[0].data,
-								name: scope.lines[0].name,
-								scale: scale1
-							},
-							{
-								color: 'red',
-								data: scope.lines[1].data,
-								name: scope.lines[1].name,
-								scale: scales2
-							}
-						]
-					});
-					new Rickshaw.Graph.Axis.Y.Scaled({
-					  element: document.getElementById('axis0'),
-					  graph: graph,
-					  orientation: 'left',
-					  scale: scales1,
-					  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
-					});
-
-					new Rickshaw.Graph.Axis.Y.Scaled({
-					  element: document.getElementById('axis1'),
-					  graph: graph,
-					  grid: false,
-					  orientation: 'right',
-					  scale: scales2,
-					  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
-					});
-
-					new Rickshaw.Graph.Axis.Time({
-					  graph: graph
-					});
-
-					new Rickshaw.Graph.HoverDetail({
-					  graph: graph
+					var graph = new Rickshaw.Graph( {
+					    element: element[0], 
+					    width: 300, 
+					    height: 300, 
+					    series: [{
+					        color: 'steelblue',
+					        data: [ 
+					            { x: 0, y: 40 }, 
+					            { x: 1, y: 49 }, 
+					            { x: 2, y: 38 }, 
+					            { x: 3, y: 30 }, 
+					            { x: 4, y: 32 } ]
+					    }]
 					});
 
 					graph.render();
 				}
 			});
+
 		}
 	};
 }]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allCountriesData = {
-            'United States': [],
-            'Mexico': [],
-            'Canada': []
+        allCountriesData = {};
+
+    $scope.countries={};
+
+
+    $.getJSON('world-countries.json', function(json) {
+        for (num in json.features) {
+            var feature = json.features[num];
+            c = feature.id;
+            //console.log(c);
+            allCountriesData[c] = {};
+
+            $scope.countries[c] = {
+                properties: {
+                    name: feature.properties.name
+                }
+            };
+            for (i = 0; i < 25; i++) {
+                year = i < 10 ? '200' : '20';
+                allCountriesData[c][i] = {
+                    year: parseInt(year + i),
+                    gdp: Math.random() * 10000
+                };
+            }
+        }
+
+
+        //console.log($scope.countries);
+
+
+        $scope.selectedCountry = {
+            name: 'USA'
         };
 
-    for (c in allCountriesData) {
-        for (i = 0; i < 25; i++) {
-            year = i < 10 ? '20' : '200';
-            allCountriesData[c][i] = {
-                year: year + i,
-                gdp: Math.random() * 10000
-            };
-        }
-    }
-
-    $scope.countries = [
-        {
-            properties: {
-                name: 'United States'
-            }
-        },
-        {
-            properties: {
-                name: 'Mexico'
-            }
-        }
-    ];
+        $scope.changeCountry($scope.selectedCountry);
+    });
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.lineData = allCountriesData[selectedCountry];
+        console.log(selectedCountry);
+        $scope.selectedCountry = {
+            name: selectedCountry.name,
+            fullName: $scope.countries[c].properties.name
+        };
+        //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
+        //$scope.lineData = allCountriesData[selectedCountry.name];
     };
 
-    $scope.selectedCountry = 'United States';
-
-    $scope.changeCountry($scope.selectedCountry);
     $scope.$watch('selectedCountry', function() {
-        console.log("Country changed to: %s", $scope.selectedCountry);
-    });
+        console.log($scope.selectedCountry);
+    }, true);
 }]);;app.controller('MapCtrl', ['$scope', function ($scope) {
         angular.extend($scope, {
                 center: {
