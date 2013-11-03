@@ -1,9 +1,21 @@
 @import "../bower_components/bootstrap/less/bootstrap.less";
- 
-html, body, .map-parent {
-  height: 100%
-}
 
 body {
-  padding-top: 51px;
+    padding-top: 60px;
 }
+
+@navbar-height: 40px;
+@navbar-inverse-bg: #447;
+@navbar-inverse-link-color: #ddd;
+@navbar-inverse-link-hover-color:           #eee;
+@navbar-inverse-link-disabled-color:        #444;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          @navbar-inverse-link-hover-color;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-toggle-icon-bar-bg:         @navbar-inverse-link-hover-color;
+@navbar-inverse-toggle-border-color:        @navbar-inverse-link-hover-color;
+

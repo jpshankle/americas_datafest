@@ -1,7 +1,7 @@
 var express = require('express');
 var routes = require('./routes');
 var map = require('./routes/map');
-var contact = require('./routes/contact');
+var about = require('./routes/about');
 var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
@@ -24,7 +24,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/api/map', map.main);
-app.get('/api/contact', contact.main);
+app.get('/api/about', about.main);
 app.get('/', routes.index);
 
 
