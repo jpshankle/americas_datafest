@@ -131,6 +131,14 @@
                 that.center = _instance.getCenter();
               }
           );
+
+          var layer = new google.maps.FusionTablesLayer({
+            query: {
+              select: 'Location',
+              from: '1YIungSkFi1TvtLpNKYh81KJqK81XrNHqfq_zSrI'
+            }
+          });
+          layer.setMap(_instance);
           
           // Attach additional event listeners if needed
           if (_handlers.length) {
@@ -412,6 +420,7 @@
                 scope.center.longitude = c.lng();
               }
             });
+
           });
         });
         
