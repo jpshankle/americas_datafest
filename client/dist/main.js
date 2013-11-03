@@ -678,52 +678,93 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 	return {
 		restrict: 'E',
 		scope: {
-			slices: '='
+			lines: '='
 		},
 		templateUrl: '/directives/d3line-directive/view.html',
 		link: function (scope, element, attrs) {
 			scope.$watchCollection(function () {
-				return scope.slices;
+				return scope.lines;
 			}, function (newValues, oldValues) {
-				element.empty();
-				var width = 600,
-					height = 400,
-					x = d3.time.scale().range([0, width]),
-					y = d3.scale.linear().range([height, 0]),
-					xAxis = d3.svg.axis().scale(x).orient('bottom'),
-					yAxis = d3.svg.axis().scale(y).orient('left'),
-					svg = d3.select(element[0]);
-				svg.append('svg')
-					.attr('width', width)
-					.attr('height', height);
+				if (newValues instanceof Array) {
+					element.empty();
+					var width = 600,
+						height = 400,
+						x = d3.time.scale().range([0, width]),
+						y = d3.scale.linear().range([height, 0]),
+						xAxis = d3.svg.axis().scale(x).orient('bottom'),
+						yAxis = d3.svg.axis().scale(y).orient('left'),
+						line = d3.svg.line()
+							.x(function (value) {
+								return x(value[attrs.x]);
+							})
+							.y(function (value) {
+								return y(value[attrs.y]);
+							}),
+						svg = d3.select(element[0]).append('svg')
+							.attr('width', width)
+							.attr('height', height);
+					x.domain(d3.extent(newValues, function (value) {
+						return value[attrs.x];
+					}));
+					y.domain(d3.extent(newValues, function (value) {
+						return value[attrs.y];
+					}));
+					svg.append('g')
+						.attr('class', 'x axis')
+						.attr('transform', 'translate(0,' + height + ')')
+						.call(xAxis);
 
+					svg.append('g')
+						.attr('class', 'y axis')
+						.attr('transform', 'translate(0,' + height + ')')
+						.call(yAxis);
 
+					svg.append('path')
+						.datum(newValues)
+						.attr('class', 'line')
+						.attr('d', line)
+				}
 			});
 		}
 	};
 }]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
-    $scope.somethingOnScope = [
-    	{
-    		title: 'hello',
-    		data: 'world'
-    	},
-    	{
-    		title: 'world',
-    		data: 'hello'
-    	}
-    ];
-    $scope.changeSomething = function () {
-        $scope.somethingOnScope = [
+    var i, c, year,
+        allCountriesData = {
+            'United States': [],
+            'Mexico': [],
+            'Canada': []
+        };
+
+    for (c in allCountriesData) {
+        for (i = 0; i < 25; i++) {
+            year = i < 10 ? '20' : '200';
+            allCountriesData[c][i] = {
+                year: year + i,
+                gdp: Math.random() * 10000
+            };
+        }
+    }
+
+    $scope.countries = [
         {
-            title: 'something',
-            data: 'world'
+            properties: {
+                name: 'United States'
+            }
         },
         {
-            title: 'else',
-            data: 'hello'
+            properties: {
+                name: 'Mexico'
+            }
         }
     ];
-    }
+
+    $scope.changeCountry = function (selectedCountry) {
+        $scope.lineData = allCountriesData[selectedCountry];
+    };
+
+    $scope.selectedCountry = 'United States';
+
+    $scope.changeCountry($scope.selectedCountry);
 }]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);

@@ -10032,3 +10032,17 @@ a:hover {
   font-size: 12px;
   color: #999;
 }
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke: #447;
+  stroke-width: 2px;
+}
