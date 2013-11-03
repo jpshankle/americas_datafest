@@ -33,7 +33,7 @@ module.exports = function (grunt) {
                 src: [
                     '../client/src/main.js',
                     '../client/src/directives/**/*.js',
-                    '../client/src/map/**/*.js',
+                    '../client/src/dashboard/**/*.js',
                     '../client/src/about/**/*.js'
                 ],
                 dest: '../client/dist/main.js'

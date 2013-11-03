@@ -1,17 +1,16 @@
 var app = angular.module('immiviz', [
-    'ngRoute',
-    'google-maps'
+    'ngRoute'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'MapCtrl',
-            templateUrl: '/map/main.html'
+            controller: 'DashboardCtrl',
+            templateUrl: '/dashboard/view.html'
         })
         .when('/about', {
             controller: 'AboutCtrl',
-            templateUrl: '/about/main.html'
+            templateUrl: '/about/view.html'
         })
         .otherwise('/');
 }]);
@@ -19,7 +18,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.controller('NavCtrl', ['$scope', function ($scope) {
     $scope.navbarItems = [
         {
-            text: 'Map',
+            text: 'Dashboard',
             url: ''
         },
         {

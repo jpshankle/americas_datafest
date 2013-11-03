@@ -1,17 +1,16 @@
 var app = angular.module('immiviz', [
-    'ngRoute',
-    'google-maps'
+    'ngRoute'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'MapCtrl',
-            templateUrl: '/map/main.html'
+            controller: 'DashboardCtrl',
+            templateUrl: '/dashboard/view.html'
         })
         .when('/about', {
             controller: 'AboutCtrl',
-            templateUrl: '/about/main.html'
+            templateUrl: '/about/view.html'
         })
         .otherwise('/');
 }]);
@@ -19,7 +18,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.controller('NavCtrl', ['$scope', function ($scope) {
     $scope.navbarItems = [
         {
-            text: 'Map',
+            text: 'Dashboard',
             url: ''
         },
         {
@@ -575,15 +574,56 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
       }
     };
   }]);  
-}());;app.controller('MapCtrl', ['$scope', function ($scope) {
-	angular.extend($scope, {
-		center: {
-			latitude: 38.8951, // initial map center latitude
-			longitude: -77.0367, // initial map center longitude
+}());;app.directive('ofD3Line', [function () {
+	return {
+		restrict: 'E',
+		scope: {
+			slices: '='
 		},
-		markers: [], // an array of markers,
-		zoom: 8, // the zoom level
-	});
+		templateUrl: '/directives/d3line-directive/view.html',
+		link: function (scope, element, attrs) {
+			scope.$watchCollection(function () {
+				return scope.slices;
+			}, function (newValues, oldValues) {
+				element.empty();
+				var width = 600,
+					height = 400,
+					x = d3.time.scale().range([0, width]),
+					y = d3.scale.linear().range([height, 0]),
+					xAxis = d3.svg.axis().scale(x).orient('bottom'),
+					yAxis = d3.svg.axis().scale(y).orient('left'),
+					svg = d3.select(element[0]);
+				svg.append('svg')
+					.attr('width', width)
+					.attr('height', height);
+
+
+			});
+		}
+	};
+}]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
+    $scope.somethingOnScope = [
+    	{
+    		title: 'hello',
+    		data: 'world'
+    	},
+    	{
+    		title: 'world',
+    		data: 'hello'
+    	}
+    ];
+    $scope.changeSomething = function () {
+        $scope.somethingOnScope = [
+        {
+            title: 'something',
+            data: 'world'
+        },
+        {
+            title: 'else',
+            data: 'hello'
+        }
+    ];
+    }
 }]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);
