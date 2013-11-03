@@ -1,5 +1,6 @@
 var app = angular.module('immiviz', [
-    'ngRoute'
+    'ngRoute',
+    'google-maps'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -8,24 +9,11 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'DashboardCtrl',
             templateUrl: '/dashboard/view.html'
         })
-        .when('/about', {
-            controller: 'AboutCtrl',
-            templateUrl: '/about/view.html'
+        .when('/map', {
+            controller: 'MapCtrl',
+            templateUrl: '/map/view.html'
         })
         .otherwise('/');
-}]);
-
-app.controller('NavCtrl', ['$scope', function ($scope) {
-    $scope.navbarItems = [
-        {
-            text: 'Dashboard',
-            url: ''
-        },
-        {
-            text: 'About',
-            url: 'about'
-        }
-    ];
 }]);;/**!
  * The MIT License
  * 
@@ -163,10 +151,14 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
           var layer = new google.maps.FusionTablesLayer({
             query: {
               select: 'Location',
-              from: '1YIungSkFi1TvtLpNKYh81KJqK81XrNHqfq_zSrI'
+              from: '1lqWreQHRPfRTZbhb1vU6ubCYVm0n1dCQk6wx-bA'
             }
           });
           layer.setMap(_instance);
+
+          var mariluLayer = new google.maps.KmlLayer('/directives/marilu/marilu.kml');
+          mariluLayer.setMap(_instance);
+          console.log(mariluLayer)
           
           // Attach additional event listeners if needed
           if (_handlers.length) {
@@ -686,6 +678,31 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 			}
 		}
 	};
+}]);;app.directive('marilu', [function () {
+	return {
+		restrict: 'E',
+		templateUrl: '/directives/marilu/view.html',
+		link: function (scope, element, attrs) {
+		        var mexico = new google.maps.LatLng(19.0000, -102.3667);
+		        var mapOptions = {
+		          center: mexico,
+		          zoom: 5,
+		          mapTypeId: google.maps.MapTypeId.TERRAIN
+		        };
+		        var map = new google.maps.Map(element.find('#map-replace')[0],
+		            mapOptions);
+		        
+		        var humanRightsLayer = new google.maps.FusionTablesLayer({
+		          query: {
+		            select: 'Location',
+		            from: ''
+		          },
+		        });
+		        humanRightsLayer.setMap(map);
+		        //"Original data and analysis on military human abuses of formal complaints of human rights abuses and formal reports by Mexico’s national human rights commission," 516 victims, 2005-2011, http://justiceinmexico.org/data-portal/
+	      console.log(element.find('#map-replace')[0])
+		}
+	};
 }]);;app.directive('ofRickshaw', [function () {
 	return {
 		restrict: 'E',
@@ -800,6 +817,13 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
     $scope.$watch('selectedCountry', function() {
         console.log("Country changed to: %s", $scope.selectedCountry);
     });
-}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
-    
+}]);;app.controller('MapCtrl', ['$scope', function ($scope) {
+        angular.extend($scope, {
+                center: {
+                        latitude: 19.0000, // initial map center latitude
+                        longitude: -102.3667 // initial map center longitude
+                },
+                markers: [], // an array of markers,
+                zoom: 5, // the zoom level
+        });
 }]);

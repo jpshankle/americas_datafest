@@ -135,10 +135,14 @@
           var layer = new google.maps.FusionTablesLayer({
             query: {
               select: 'Location',
-              from: '1YIungSkFi1TvtLpNKYh81KJqK81XrNHqfq_zSrI'
+              from: '1lqWreQHRPfRTZbhb1vU6ubCYVm0n1dCQk6wx-bA'
             }
           });
           layer.setMap(_instance);
+
+          var mariluLayer = new google.maps.KmlLayer('/directives/marilu/marilu.kml');
+          mariluLayer.setMap(_instance);
+          console.log(mariluLayer)
           
           // Attach additional event listeners if needed
           if (_handlers.length) {

@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>Marilú's Journey</name>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Esquipulas, Marilú's home city</name>
+			<Point>
+				<coordinates>-89.35277099999996,14.561913,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Tecun Uman, Robbed at gunpoint</name>
+			<Point>
+				<coordinates>-92.13217199999997,14.68003,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Huehuetán, Detained</name>
+			<Point>
+				<coordinates>-92.38084649999996,15.019419,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Tecun Uman, Returned to Guatemala</name>
+			<Point>
+				<coordinates>-92.13217199999997,14.68003,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Worked on a mango plantation
+</name>
+			<Point>
+				<coordinates>-92.16474094241943,14.67597459366324,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Detained</name>
+			<Point>
+				<coordinates>-92.1648645401001,14.67211327279106,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Tecun Uman, Returned to Guatemala</name>
+			<Point>
+				<coordinates>-92.13217199999997,14.68003,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#icon-503-FF8277</styleUrl>
+			<name>Arriaga. Marilú pushed off train and lost right leg.
+</name>
+			<description><![CDATA[Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.” [Jácome, 11]]]></description>
+			<Point>
+				<coordinates>-93.896297,16.2338169,0.0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Crossed Guatemala by bus</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-89.35277099999996,14.561913,0.0 -92.13217199999997,14.68003,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Walked for two days</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.13217199999997,14.68003,0.0 -92.38084649999996,15.019419,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Crossed the border on foot</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.13217199999997,14.68003,0.0 -92.16474094241943,14.67597459366324,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Walked to highway to look for phone to call home</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.16474094241943,14.67597459366324,0.0 -92.1648645401001,14.67211327279106,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Used plantation wages to hire vans around checkpoints</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.13217199999997,14.68003,0.0 -93.89629700000006,16.23381689999999,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Deported</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.38084649999996,15.019419,0.0 -92.13306427001953,14.681744755162663,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<styleUrl>#line-000000-4</styleUrl>
+			<name>Deported</name>
+			<LineString>
+				<tessellate>0</tessellate>
+				<coordinates>-92.1648645401001,14.67211327279106,0.0 -92.13217199999997,14.68003,0.0</coordinates>
+			</LineString>
+		</Placemark>
+		<Style id='line-000000-4'>
+			<LineStyle>
+				<color>ff000000</color>
+				<width>4</width>
+			</LineStyle>
+		</Style>
+		<Style id='icon-503-FF8277'>
+			<IconStyle>
+				<color>ff7782FF</color>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+				</Icon>
+			</IconStyle>
+		</Style>
+	</Document>
+</kml>

@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                     '../client/src/main.js',
                     '../client/src/directives/**/*.js',
                     '../client/src/dashboard/**/*.js',
-                    '../client/src/about/**/*.js'
+                    '../client/src/map/**/*.js'
                 ],
                 dest: '../client/dist/main.js'
             }
@@ -57,7 +57,8 @@ module.exports = function (grunt) {
                 src: [
                     '**/*.html',
                     '**/*.png',
-                    '*.json'
+                    '*.json',
+                    '**/*.kml'
                 ],
                 dest: '../client/dist/'
             },

@@ -9931,6 +9931,11 @@ td.visible-print {
 body {
   padding-top: 60px;
 }
+#map-canvas {
+  position: relative;
+  height: 500px;
+  display: block;
+}
 svg {
   width: 1280px;
   height: 800px;
@@ -9942,6 +9947,9 @@ circle {
 path {
   fill: #8399b0;
   stroke: #fff;
+}
+path.active {
+  fill: magenta;
 }
 a.navbar-brand.app-logo {
   text-align: center;
