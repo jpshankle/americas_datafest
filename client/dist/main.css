@@ -9931,6 +9931,11 @@ td.visible-print {
 body {
   padding-top: 60px;
 }
+#map-canvas {
+  position: relative;
+  height: 500px;
+  display: block;
+}
 svg {
   width: 1280px;
   height: 800px;

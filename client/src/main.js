@@ -1,5 +1,6 @@
 var app = angular.module('immiviz', [
-    'ngRoute'
+    'ngRoute',
+    'google-maps'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -8,22 +9,9 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'DashboardCtrl',
             templateUrl: '/dashboard/view.html'
         })
-        .when('/about', {
-            controller: 'AboutCtrl',
-            templateUrl: '/about/view.html'
+        .when('/map', {
+            controller: 'MapCtrl',
+            templateUrl: '/map/view.html'
         })
         .otherwise('/');
-}]);
-
-app.controller('NavCtrl', ['$scope', function ($scope) {
-    $scope.navbarItems = [
-        {
-            text: 'Dashboard',
-            url: ''
-        },
-        {
-            text: 'About',
-            url: 'about'
-        }
-    ];
 }]);

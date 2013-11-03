@@ -1,5 +1,6 @@
 var app = angular.module('immiviz', [
-    'ngRoute'
+    'ngRoute',
+    'google-maps'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -8,24 +9,11 @@ app.config(['$routeProvider', function($routeProvider) {
             controller: 'DashboardCtrl',
             templateUrl: '/dashboard/view.html'
         })
-        .when('/about', {
-            controller: 'AboutCtrl',
-            templateUrl: '/about/view.html'
+        .when('/map', {
+            controller: 'MapCtrl',
+            templateUrl: '/map/view.html'
         })
         .otherwise('/');
-}]);
-
-app.controller('NavCtrl', ['$scope', function ($scope) {
-    $scope.navbarItems = [
-        {
-            text: 'Dashboard',
-            url: ''
-        },
-        {
-            text: 'About',
-            url: 'about'
-        }
-    ];
 }]);;/**!
  * The MIT License
  * 
@@ -163,10 +151,14 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
           var layer = new google.maps.FusionTablesLayer({
             query: {
               select: 'Location',
-              from: '1YIungSkFi1TvtLpNKYh81KJqK81XrNHqfq_zSrI'
+              from: '1lqWreQHRPfRTZbhb1vU6ubCYVm0n1dCQk6wx-bA'
             }
           });
           layer.setMap(_instance);
+
+          var mariluLayer = new google.maps.KmlLayer('/directives/marilu/marilu.kml');
+          mariluLayer.setMap(_instance);
+          console.log(mariluLayer)
           
           // Attach additional event listeners if needed
           if (_handlers.length) {
@@ -586,15 +578,15 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 }());;app.directive('d3Globe', [function () {
 	return {
 		restrict: 'E',
-		templateUrl: '/directives/d3line-directive/view.html',
+		transclude: true,
 		scope: {
 			selectedCountry: '='
 		},
+		templateUrl: '/directives/d3line-directive/view.html',
 		link: function (scope, element, attrs) {
 			element.empty();
 			var activeFeature = null;
 			var feature;
-
 
 			var projection = d3.geo.azimuthal()
 			    .scale(380)
@@ -605,7 +597,7 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 			var circle = d3.geo.greatCircle()
 			    .origin(projection.origin());
 
-						// TODO fix d3.geo.azimuthal to be consistent with scale
+			// TODO fix d3.geo.azimuthal to be consistent with scale
 			var scale = {
 			  orthographic: 380,
 			  stereographic: 380,
@@ -622,40 +614,34 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 			    .attr("height", 800)
 			    .on("mousedown", mousedown);
 
-			function makeShitHappen(){
+			d3.json("world-countries.json", function(collection) {
+			  feature = svg.selectAll("path")
+			    .data(collection.features)
+			    .enter().append("svg:path")
+			    .attr("d", clip);
 
-				d3.json("world-countries.json", function(collection) {
-				  feature = svg.selectAll("path")
-				    .data(collection.features)
-				    .enter().append("svg:path")
-				    .attr("d", clip);
+			  feature.append("svg:title")
+			      .text(function(d) { return d.properties.name; });
+			  feature.append("id")
+			      .text(function(d) { return d.id; });
+			  feature.on("click", function(){
+			  	if (activeFeature !== null) {
+			  		activeFeature.style("fill", "#8399b0");
+			  	}
+			  	activeFeature = d3.select(this);
+			  	scope.selectedCountry = activeFeature.select("id")[0][0].textContent;
+			  	activeFeature.style("fill", "magenta");
+			  });
+			});
 
-				  feature.append("svg:title")
-				      .text(function(d) { return d.properties.name; });
-				  feature.append("id")
-				      .text(function(d) { return d.id; });
-				  feature.on("click", function(){
-				  	if (activeFeature !== null) {
-				  		activeFeature.style("fill", "#8399b0");
-				  	}
-				  	activeFeature = d3.select(this);
-				  	//console.log(scope);
-				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent});
-				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
-				  	activeFeature.style("fill", "magenta");
-				  });
-				});
+			d3.select(window)
+			    .on("mousemove", mousemove)
+			    .on("mouseup", mouseup);
 
-				d3.select(window)
-				    .on("mousemove", mousemove)
-				    .on("mouseup", mouseup);
-
-				d3.select("select").on("change", function() {
-				  projection.mode(this.value).scale(scale[this.value]);
-				  refresh(750);
-				});
-
-			}
+			d3.select("select").on("change", function() {
+			  projection.mode(this.value).scale(scale[this.value]);
+			  refresh(750);
+			});
 
 			var m0,
 			    o0;
@@ -690,8 +676,31 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 			function clip(d) {
 			  return path(circle.clip(d));
 			}
-
-			makeShitHappen();
+		}
+	};
+}]);;app.directive('marilu', [function () {
+	return {
+		restrict: 'E',
+		templateUrl: '/directives/marilu/view.html',
+		link: function (scope, element, attrs) {
+		        var mexico = new google.maps.LatLng(19.0000, -102.3667);
+		        var mapOptions = {
+		          center: mexico,
+		          zoom: 5,
+		          mapTypeId: google.maps.MapTypeId.TERRAIN
+		        };
+		        var map = new google.maps.Map(element.find('#map-replace')[0],
+		            mapOptions);
+		        
+		        var humanRightsLayer = new google.maps.FusionTablesLayer({
+		          query: {
+		            select: 'Location',
+		            from: ''
+		          },
+		        });
+		        humanRightsLayer.setMap(map);
+		        //"Original data and analysis on military human abuses of formal complaints of human rights abuses and formal reports by Mexico’s national human rights commission," 516 victims, 2005-2011, http://justiceinmexico.org/data-portal/
+	      console.log(element.find('#map-replace')[0])
 		}
 	};
 }]);;app.directive('ofRickshaw', [function () {
@@ -709,8 +718,6 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 				left: 50
 			}
 			scope.$watchCollection('lines', function (newValues, oldValues) {
-				console.log(newValues);
-				/*
 				if (typeof newValues === 'object') {
 					element.empty();
 
@@ -765,62 +772,58 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
 					});
 
 					graph.render();
-				}*/
+				}
 			});
 		}
 	};
 }]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allCountriesData = {};
+        allCountriesData = {
+            'United States': [],
+            'Mexico': [],
+            'Canada': []
+        };
 
-    $scope.countries={};
-
-
-    $.getJSON('world-countries.json', function(json) {
-        for (num in json.features) {
-            var feature = json.features[num];
-            c = feature.id;
-            //console.log(c);
-            allCountriesData[c] = {};
-
-            $scope.countries[c] = {
-                properties: {
-                    name: feature.properties.name
-                }
+    for (c in allCountriesData) {
+        for (i = 0; i < 25; i++) {
+            year = i < 10 ? '20' : '200';
+            allCountriesData[c][i] = {
+                year: year + i,
+                gdp: Math.random() * 10000
             };
-            for (i = 0; i < 25; i++) {
-                year = i < 10 ? '200' : '20';
-                allCountriesData[c][i] = {
-                    year: parseInt(year + i),
-                    gdp: Math.random() * 10000
-                };
+        }
+    }
+
+    $scope.countries = [
+        {
+            properties: {
+                name: 'United States'
+            }
+        },
+        {
+            properties: {
+                name: 'Mexico'
             }
         }
-
-
-        //console.log($scope.countries);
-
-
-        $scope.selectedCountry = {
-            name: 'USA'
-        };
-
-        $scope.changeCountry($scope.selectedCountry);
-    });
+    ];
 
     $scope.changeCountry = function (selectedCountry) {
-        console.log(selectedCountry);
-        $scope.selectedCountry = {
-            name: selectedCountry.name,
-            fullName: $scope.countries[c].properties.name
-        };
-        //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
-        //$scope.lineData = allCountriesData[selectedCountry.name];
+        $scope.lineData = allCountriesData[selectedCountry];
     };
 
+    $scope.selectedCountry = 'United States';
+
+    $scope.changeCountry($scope.selectedCountry);
     $scope.$watch('selectedCountry', function() {
-        console.log($scope.selectedCountry);
-    }, true);
-}]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
-    
+        console.log("Country changed to: %s", $scope.selectedCountry);
+    });
+}]);;app.controller('MapCtrl', ['$scope', function ($scope) {
+        angular.extend($scope, {
+                center: {
+                        latitude: 19.0000, // initial map center latitude
+                        longitude: -102.3667 // initial map center longitude
+                },
+                markers: [], // an array of markers,
+                zoom: 5, // the zoom level
+        });
 }]);
