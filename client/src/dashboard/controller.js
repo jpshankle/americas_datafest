@@ -9,7 +9,6 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
         for (num in json.features) {
             var feature = json.features[num];
             c = feature.id;
-            //console.log(c);
             allCountriesData[c] = {};
 
             $scope.countries[c] = {
@@ -27,23 +26,18 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
         }
 
 
-        //console.log($scope.countries);
-
-
         $scope.selectedCountry = {
-            name: 'USA'
+            name: 'USA',
+            fullName: 'Please Select a Country'
         };
 
         $scope.changeCountry($scope.selectedCountry);
     });
 
     $scope.changeCountry = function (selectedCountry) {
-        //console.log(selectedCountry);
         $scope.selectedCountry = selectedCountry;
         $scope.lineData = allCountriesData[selectedCountry.name];
         $scope.$apply();
-        //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
-        
     };
     $scope.$watch('selectedCountry', function() {
         //console.log($scope.selectedCountry);
