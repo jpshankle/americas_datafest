@@ -7,4 +7,7 @@ app.controller('MapCtrl', ['$scope', function ($scope) {
 		markers: [], // an array of markers,
 		zoom: 8, // the zoom level
 	});
+	//https://www.google.com/fusiontables/DataSource?docid=1YIungSkFi1TvtLpNKYh81KJqK81XrNHqfq_zSrI
+	//
+
 }]);
