@@ -1,5 +1,11 @@
 <div class="row">
-	<div class="col-md-12">
-		<of-d3-line slices="somethingOnScope"></of-d3-line>
+	<div class="col-md-7">
+		<of-d3-line lines="lineData" x="year" y="gdp"></of-d3-line>
+	</div>
+	<div class="col-md-5">
+		<select ng-options="country.properties.name as country.properties.name for country in countries"
+			ng-model="selectedCountry"
+			ng-change="changeCountry(selectedCountry)">
+		</select>
 	</div>
 </div>

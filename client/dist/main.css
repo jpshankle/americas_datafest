@@ -5957,3 +5957,17 @@ td.visible-print {
 body {
   padding-top: 60px;
 }
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke: #447;
+  stroke-width: 2px;
+}

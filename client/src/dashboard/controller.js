@@ -1,24 +1,39 @@
 app.controller('DashboardCtrl', ['$scope', function ($scope) {
-    $scope.somethingOnScope = [
-    	{
-    		title: 'hello',
-    		data: 'world'
-    	},
-    	{
-    		title: 'world',
-    		data: 'hello'
-    	}
-    ];
-    $scope.changeSomething = function () {
-        $scope.somethingOnScope = [
+    var i, c, year,
+        allCountriesData = {
+            'United States': [],
+            'Mexico': [],
+            'Canada': []
+        };
+
+    for (c in allCountriesData) {
+        for (i = 0; i < 25; i++) {
+            year = i < 10 ? '20' : '200';
+            allCountriesData[c][i] = {
+                year: year + i,
+                gdp: Math.random() * 10000
+            };
+        }
+    }
+
+    $scope.countries = [
         {
-            title: 'something',
-            data: 'world'
+            properties: {
+                name: 'United States'
+            }
         },
         {
-            title: 'else',
-            data: 'hello'
+            properties: {
+                name: 'Mexico'
+            }
         }
     ];
-    }
+
+    $scope.changeCountry = function (selectedCountry) {
+        $scope.lineData = allCountriesData[selectedCountry];
+    };
+
+    $scope.selectedCountry = 'United States';
+
+    $scope.changeCountry($scope.selectedCountry);
 }]);
