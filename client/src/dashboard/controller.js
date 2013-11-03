@@ -1,39 +1,53 @@
 app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allCountriesData = {
-            'United States': [],
-            'Mexico': [],
-            'Canada': []
-        };
+        allgdp = {
+            name: 'GDP',
+            attr: 'gdp',
+            data: {
+                'United States': [],
+                'Mexico': [],
+                'Canada': []
+            }
+    }, allage = {
+        name: 'Age',
+        attr: 'age',
+        data: {
 
-    for (c in allCountriesData) {
-        for (i = 0; i < 25; i++) {
-            year = i < 10 ? '20' : '200';
-            allCountriesData[c][i] = {
-                year: year + i,
+        }
+    };
+
+    $scope.countries = [];
+
+    for (c in allgdp.data) {
+        allage.data[c] = [];
+        for (i = 0; i < 99; i++) {
+            year = i < 10 ? '200' : '20';
+            year++;
+            allgdp.data[c][i] = {
+                year: year,
                 gdp: Math.random() * 10000
             };
+            allage.data[c][i] = {
+                year: year,
+                age: i + 5
+            }
         }
+        $scope.countries.push({
+            properties: {
+                name: c
+            }
+        });
     }
 
-    $scope.countries = [
-        {
-            properties: {
-                name: 'United States'
-            }
-        },
-        {
-            properties: {
-                name: 'Mexico'
-            }
-        }
-    ];
+    
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.lineData = allCountriesData[selectedCountry];
+        $scope.linesData = [
+            allgdp[selectedCountry],
+            allage[selectedCountry]
+        ];
     };
 
     $scope.selectedCountry = 'United States';
 
-    $scope.changeCountry($scope.selectedCountry);
 }]);

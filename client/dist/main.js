@@ -583,97 +583,131 @@ app.controller('NavCtrl', ['$scope', function ($scope) {
       }
     };
   }]);  
-}());;app.directive('ofD3Line', [function () {
+}());;app.directive('ofRickshaw', [function () {
 	return {
 		restrict: 'E',
 		scope: {
 			lines: '='
 		},
-		templateUrl: '/directives/d3line-directive/view.html',
+		templateUrl: '/directives/ofrickshaw-directive/view.html',
 		link: function (scope, element, attrs) {
-			scope.$watchCollection(function () {
-				return scope.lines;
-			}, function (newValues, oldValues) {
-				if (newValues instanceof Array) {
+			var margin = {
+				top: 20,
+				right: 20,
+				bottom: 30,
+				left: 50
+			}
+			scope.$watchCollection('lines', function (newValues, oldValues) {
+				if (typeof newValues === 'object') {
 					element.empty();
-					var width = 600,
-						height = 400,
-						x = d3.time.scale().range([0, width]),
-						y = d3.scale.linear().range([height, 0]),
-						xAxis = d3.svg.axis().scale(x).orient('bottom'),
-						yAxis = d3.svg.axis().scale(y).orient('left'),
-						line = d3.svg.line()
-							.x(function (value) {
-								return x(value[attrs.x]);
-							})
-							.y(function (value) {
-								return y(value[attrs.y]);
-							}),
-						svg = d3.select(element[0]).append('svg')
-							.attr('width', width)
-							.attr('height', height);
-					x.domain(d3.extent(newValues, function (value) {
-						return value[attrs.x];
-					}));
-					y.domain(d3.extent(newValues, function (value) {
-						return value[attrs.y];
-					}));
-					svg.append('g')
-						.attr('class', 'x axis')
-						.attr('transform', 'translate(0,' + height + ')')
-						.call(xAxis);
 
-					svg.append('g')
-						.attr('class', 'y axis')
-						.attr('transform', 'translate(0,' + height + ')')
-						.call(yAxis);
+					var scale1 = d3.scale.linear().domain(d3.extent(newValues, function (value) {
+							return value[scope.lines[0]['attr']];
+						})),
+						scale2 = d3.scale.linear().domain(d3.extent(newValues, function (value) {
+							return value[scope.lines[1]['attr']];
+						}));
+					var graph = new Rickshaw.Graph({
+						element: element[0],
+						width: 400,
+						renderer: 'line',
+						series: [
+							{
+								color: 'steelblue',
+								data: scope.lines[0].data,
+								name: scope.lines[0].name,
+								scale: scale1
+							},
+							{
+								color: 'red',
+								data: scope.lines[1].data,
+								name: scope.lines[1].name,
+								scale: scales2
+							}
+						]
+					});
+					new Rickshaw.Graph.Axis.Y.Scaled({
+					  element: document.getElementById('axis0'),
+					  graph: graph,
+					  orientation: 'left',
+					  scale: scales1,
+					  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+					});
 
-					svg.append('path')
-						.datum(newValues)
-						.attr('class', 'line')
-						.attr('d', line)
+					new Rickshaw.Graph.Axis.Y.Scaled({
+					  element: document.getElementById('axis1'),
+					  graph: graph,
+					  grid: false,
+					  orientation: 'right',
+					  scale: scales2,
+					  tickFormat: Rickshaw.Fixtures.Number.formatKMBT
+					});
+
+					new Rickshaw.Graph.Axis.Time({
+					  graph: graph
+					});
+
+					new Rickshaw.Graph.HoverDetail({
+					  graph: graph
+					});
+
+					graph.render();
 				}
 			});
 		}
 	};
 }]);;app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allCountriesData = {
-            'United States': [],
-            'Mexico': [],
-            'Canada': []
-        };
+        allgdp = {
+            name: 'GDP',
+            attr: 'gdp',
+            data: {
+                'United States': [],
+                'Mexico': [],
+                'Canada': []
+            }
+    }, allage = {
+        name: 'Age',
+        attr: 'age',
+        data: {
 
-    for (c in allCountriesData) {
-        for (i = 0; i < 25; i++) {
-            year = i < 10 ? '20' : '200';
-            allCountriesData[c][i] = {
-                year: year + i,
+        }
+    };
+
+    $scope.countries = [];
+
+    for (c in allgdp.data) {
+        allage.data[c] = [];
+        for (i = 0; i < 99; i++) {
+            year = i < 10 ? '200' : '20';
+            year++;
+            allgdp.data[c][i] = {
+                year: year,
                 gdp: Math.random() * 10000
             };
+            allage.data[c][i] = {
+                year: year,
+                age: i + 5
+            }
         }
+        $scope.countries.push({
+            properties: {
+                name: c
+            }
+        });
     }
 
-    $scope.countries = [
-        {
-            properties: {
-                name: 'United States'
-            }
-        },
-        {
-            properties: {
-                name: 'Mexico'
-            }
-        }
-    ];
+    
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.lineData = allCountriesData[selectedCountry];
+        $scope.linesData = [
+            allgdp[selectedCountry],
+            allage[selectedCountry]
+        ];
     };
 
     $scope.selectedCountry = 'United States';
 
-    $scope.changeCountry($scope.selectedCountry);
 }]);;app.controller('ContactCtrl', ['$scope', '$http', function ($scope, $http) {
     
 }]);
