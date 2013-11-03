@@ -3,10 +3,7 @@
 		<of-rickshaw lines="linesData"></of-rickshaw>
 	</div>
 	<div class="col-md-5">
-		<select ng-options="country.properties.name as country.properties.name for country in countries"
-			ng-model="selectedCountry"
-			ng-change="changeCountry(selectedCountry)">
-		</select>
+		<h3>{{selectedCountry.fullName}}</h3>
 	</div>
 </div>
 <div class="row">

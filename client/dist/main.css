@@ -9943,6 +9943,9 @@ path {
   fill: #8399b0;
   stroke: #fff;
 }
+path.active {
+  fill: magenta;
+}
 a.navbar-brand.app-logo {
   text-align: center;
   color: #FFFFFF;

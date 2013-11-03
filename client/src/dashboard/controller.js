@@ -1,42 +1,53 @@
 app.controller('DashboardCtrl', ['$scope', function ($scope) {
     var i, c, year,
-        allCountriesData = {
-            'United States': [],
-            'Mexico': [],
-            'Canada': []
+        allCountriesData = {};
+
+    $scope.countries={};
+
+
+    $.getJSON('world-countries.json', function(json) {
+        for (num in json.features) {
+            var feature = json.features[num];
+            c = feature.id;
+            //console.log(c);
+            allCountriesData[c] = {};
+
+            $scope.countries[c] = {
+                properties: {
+                    name: feature.properties.name
+                }
+            };
+            for (i = 0; i < 25; i++) {
+                year = i < 10 ? '200' : '20';
+                allCountriesData[c][i] = {
+                    year: parseInt(year + i),
+                    gdp: Math.random() * 10000
+                };
+            }
+        }
+
+
+        //console.log($scope.countries);
+
+
+        $scope.selectedCountry = {
+            name: 'USA'
         };
 
-    for (c in allCountriesData) {
-        for (i = 0; i < 25; i++) {
-            year = i < 10 ? '20' : '200';
-            allCountriesData[c][i] = {
-                year: year + i,
-                gdp: Math.random() * 10000
-            };
-        }
-    }
-
-    $scope.countries = [
-        {
-            properties: {
-                name: 'United States'
-            }
-        },
-        {
-            properties: {
-                name: 'Mexico'
-            }
-        }
-    ];
+        $scope.changeCountry($scope.selectedCountry);
+    });
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.lineData = allCountriesData[selectedCountry];
+        console.log(selectedCountry);
+        $scope.selectedCountry = {
+            name: selectedCountry.name,
+            fullName: $scope.countries[c].properties.name
+        };
+        //$scope.selectedCountry["fullName"] = $scope.countries[c].properties.name;
+        //$scope.lineData = allCountriesData[selectedCountry.name];
     };
 
-    $scope.selectedCountry = 'United States';
-
-    $scope.changeCountry($scope.selectedCountry);
     $scope.$watch('selectedCountry', function() {
-        console.log("Country changed to: %s", $scope.selectedCountry);
-    });
+        console.log($scope.selectedCountry);
+    }, true);
 }]);

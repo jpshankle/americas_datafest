@@ -13,6 +13,8 @@ app.directive('ofRickshaw', [function () {
 				left: 50
 			}
 			scope.$watchCollection('lines', function (newValues, oldValues) {
+				console.log(newValues);
+				/*
 				if (typeof newValues === 'object') {
 					element.empty();
 
@@ -67,7 +69,7 @@ app.directive('ofRickshaw', [function () {
 					});
 
 					graph.render();
-				}
+				}*/
 			});
 		}
 	};

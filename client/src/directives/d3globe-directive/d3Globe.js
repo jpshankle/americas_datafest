@@ -1,15 +1,15 @@
 app.directive('d3Globe', [function () {
 	return {
 		restrict: 'E',
-		transclude: true,
+		templateUrl: '/directives/d3line-directive/view.html',
 		scope: {
 			selectedCountry: '='
 		},
-		templateUrl: '/directives/d3line-directive/view.html',
 		link: function (scope, element, attrs) {
 			element.empty();
 			var activeFeature = null;
 			var feature;
+
 
 			var projection = d3.geo.azimuthal()
 			    .scale(380)
@@ -20,7 +20,7 @@ app.directive('d3Globe', [function () {
 			var circle = d3.geo.greatCircle()
 			    .origin(projection.origin());
 
-			// TODO fix d3.geo.azimuthal to be consistent with scale
+						// TODO fix d3.geo.azimuthal to be consistent with scale
 			var scale = {
 			  orthographic: 380,
 			  stereographic: 380,
@@ -37,34 +37,40 @@ app.directive('d3Globe', [function () {
 			    .attr("height", 800)
 			    .on("mousedown", mousedown);
 
-			d3.json("world-countries.json", function(collection) {
-			  feature = svg.selectAll("path")
-			    .data(collection.features)
-			    .enter().append("svg:path")
-			    .attr("d", clip);
+			function makeShitHappen(){
 
-			  feature.append("svg:title")
-			      .text(function(d) { return d.properties.name; });
-			  feature.append("id")
-			      .text(function(d) { return d.id; });
-			  feature.on("click", function(){
-			  	if (activeFeature !== null) {
-			  		activeFeature.style("fill", "#8399b0");
-			  	}
-			  	activeFeature = d3.select(this);
-			  	scope.selectedCountry = activeFeature.select("id")[0][0].textContent;
-			  	activeFeature.style("fill", "magenta");
-			  });
-			});
+				d3.json("world-countries.json", function(collection) {
+				  feature = svg.selectAll("path")
+				    .data(collection.features)
+				    .enter().append("svg:path")
+				    .attr("d", clip);
 
-			d3.select(window)
-			    .on("mousemove", mousemove)
-			    .on("mouseup", mouseup);
+				  feature.append("svg:title")
+				      .text(function(d) { return d.properties.name; });
+				  feature.append("id")
+				      .text(function(d) { return d.id; });
+				  feature.on("click", function(){
+				  	if (activeFeature !== null) {
+				  		activeFeature.style("fill", "#8399b0");
+				  	}
+				  	activeFeature = d3.select(this);
+				  	//console.log(scope);
+				  	scope.$parent.changeCountry({name: activeFeature.select("id")[0][0].textContent});
+				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
+				  	activeFeature.style("fill", "magenta");
+				  });
+				});
 
-			d3.select("select").on("change", function() {
-			  projection.mode(this.value).scale(scale[this.value]);
-			  refresh(750);
-			});
+				d3.select(window)
+				    .on("mousemove", mousemove)
+				    .on("mouseup", mouseup);
+
+				d3.select("select").on("change", function() {
+				  projection.mode(this.value).scale(scale[this.value]);
+				  refresh(750);
+				});
+
+			}
 
 			var m0,
 			    o0;
@@ -99,6 +105,8 @@ app.directive('d3Globe', [function () {
 			function clip(d) {
 			  return path(circle.clip(d));
 			}
+
+			makeShitHappen();
 		}
 	};
 }]);
