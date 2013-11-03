@@ -36,4 +36,7 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
     $scope.selectedCountry = 'United States';
 
     $scope.changeCountry($scope.selectedCountry);
+    $scope.$watch('selectedCountry', function() {
+        console.log("Country changed to: %s", $scope.selectedCountry);
+    });
 }]);

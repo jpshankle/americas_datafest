@@ -1,12 +1,14 @@
 app.directive('d3Globe', [function () {
 	return {
 		restrict: 'E',
+		transclude: true,
 		scope: {
-			slices: '='
+			selectedCountry: '='
 		},
 		templateUrl: '/directives/d3line-directive/view.html',
 		link: function (scope, element, attrs) {
 			element.empty();
+			var activeFeature = null;
 			var feature;
 
 			var projection = d3.geo.azimuthal()
@@ -37,12 +39,22 @@ app.directive('d3Globe', [function () {
 
 			d3.json("world-countries.json", function(collection) {
 			  feature = svg.selectAll("path")
-			      .data(collection.features)
+			    .data(collection.features)
 			    .enter().append("svg:path")
-			      .attr("d", clip);
+			    .attr("d", clip);
 
 			  feature.append("svg:title")
 			      .text(function(d) { return d.properties.name; });
+			  feature.append("id")
+			      .text(function(d) { return d.id; });
+			  feature.on("click", function(){
+			  	if (activeFeature !== null) {
+			  		activeFeature.style("fill", "#8399b0");
+			  	}
+			  	activeFeature = d3.select(this);
+			  	scope.selectedCountry = activeFeature.select("id")[0][0].textContent;
+			  	activeFeature.style("fill", "magenta");
+			  });
 			});
 
 			d3.select(window)
