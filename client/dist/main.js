@@ -749,6 +749,7 @@ app.config(['$routeProvider', function($routeProvider) {
 					    element: element[0], 
 					    width: 300, 
 					    height: 300,
+                        renderer: 'line',
 					    series: [
 					    	{
 					        color: 'red',

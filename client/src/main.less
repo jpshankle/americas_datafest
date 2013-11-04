@@ -1,13 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,700);
-
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "colorbrewer.less";
 
-@font-family-sans-serif:  				'Raleway', sans-serif;
-@font-family-serif:       				'Droid Serif', serif;
-@font-family-base:        				@font-family-sans-serif;
+@font-family-sans-serif: 'Raleway', sans-serif;
+@font-family-serif: 'Droid Serif', serif;
+@font-family-base: @font-family-sans-serif;
 
-@headings-font-weight:    				100;
+@headings-font-weight: 100;
 
 body {
   padding-top: 60px;
@@ -28,25 +27,50 @@ svg {
 
 }
 
-div#linesthing {
+#immivizglobe {
   svg {
-  position: relative;
-  top: -800px;
-  left: 200px;
+    position: relative;
+    top: -800px;
+    left: 200px;
   }
-}
-
-circle {
-  fill: #dbe4f0;
-}
-
-path {
-  fill: #8399b0;
-  stroke: #fff;
-}
+  circle {
+    fill: #dbe4f0;
+  }
+    
+  path {
+    fill: #8399b0;
+    stroke: #fff;
+  }
+  
   path.active {
     fill: magenta;
   }
+  .hint {
+    position: absolute;
+    right: 0;
+    width: 1280px;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+  
+  .x.axis path {
+    display: none;
+  }
+  
+  .line {
+    fill: none;
+    stroke: #447;
+    stroke-width: 2px;
+  }
+}
+
 
 @navbar-height: 50px;
 @navbar-inverse-bg: #447;
@@ -155,29 +179,4 @@ a:link, a:visited {
 
 a:hover {
   color: #666;
-}
-
-.hint {
-  position: absolute;
-  right: 0;
-  width: 1280px;
-  font-size: 12px;
-  color: #999;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: #447;
-  stroke-width: 2px;
 }
