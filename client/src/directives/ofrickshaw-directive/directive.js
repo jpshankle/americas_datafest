@@ -14,7 +14,6 @@ app.directive('ofRickshaw', [function () {
 			}
 			scope.$watchCollection('lines', function (newValues, oldValues) {
 				if (typeof newValues === 'object') {
-					console.log(newValues)
 					var data = [];
 					 for (var i in newValues) {
 					 	var item = newValues[i];
@@ -23,15 +22,29 @@ app.directive('ofRickshaw', [function () {
 							y: item.gdp
 						});
 					};
+
+					var second = data.map(function (thing) {
+						return {
+							x: thing.x,
+							y: thing.y / 2
+						};
+					});
+					console.log(second);
 					element.empty();
 					var graph = new Rickshaw.Graph( {
 					    element: element[0], 
 					    width: 300, 
 					    height: 300,
-					    series: [{
-					        color: 'steelblue',
+					    series: [
+					    	{
+					        color: 'red',
 					        data: data	
-					    }]
+					    	},
+					    	{
+					        color: '#333',
+					        data: second	
+					    	}
+					    ]
 					});
 
 					graph.render();

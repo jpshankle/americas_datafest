@@ -78,6 +78,7 @@ module.exports = function (grunt) {
                     'default'
                 ],
                 options: {
+                    atBegin: true,
                     spawn: false
                 }
             }
