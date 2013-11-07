@@ -9956,9 +9956,16 @@ body {
   height: 400px;
   width: 40px;
 }
+.globeElement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  z-index: -10000;
+}
 .globeElement svg {
-  pointer-events: all;
   position: relative;
+  pointer-events: all;
 }
 .globeElement circle {
   fill: #dbe4f0;

@@ -17,7 +17,7 @@ app.directive('d3Globe', [function () {
 
 			var projection = d3.geo.orthographic()
 			    .scale(halfGlobeWidth)
-			    .translate([halfGlobeWidth, halfGlobeWidth]);
+			    .translate([halfGlobeWidth, halfGlobeWidth])
 			    .rotate([-71.03,42.37])
 			    .clipAngle(90)
 			    .precision(.1);
