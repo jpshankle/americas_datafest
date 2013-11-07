@@ -8,13 +8,13 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 		link: function (scope, element, attrs) {
 
 			var globeElement = element.children('.globeElement'),
-				globeWidth = body.height() * 2,
+				globeWidth = body.width() * 1.25,
 				halfGlobeWidth = globeWidth / 2;
 
 				console.log(globeWidth)
 			globeElement.empty();
 			globeElement.height(globeWidth);
-			globeElement.css('left', '-' + halfGlobeWidth / 2 + 'px');
+			globeElement.css('left', '-' + body.width() / 4 + 'px');
 			var activeFeature = null;
 			var feature, pathArcs;
 

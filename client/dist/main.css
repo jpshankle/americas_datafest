@@ -9931,6 +9931,9 @@ td.visible-print {
 body {
   padding-top: 60px;
   overflow: hidden;
+  background: url(images/texture-noise.png);
+  margin: 0;
+  font-size: 14px;
 }
 #immiviz-container {
   padding: 0 30px;
@@ -9973,6 +9976,14 @@ body {
   left: 550px;
   height: 200px;
   width: 40px;
+}
+.rickshawtwolines .rickshaw_graph .y_ticks path,
+.rickshawtwolines .rickshaw_graph .x_ticks_d3 path,
+.rickshawtwolines .rickshaw_graph .y_ticks .tick,
+.rickshawtwolines .rickshaw_graph .x_ticks_d3 .tick,
+.rickshawtwolines .rickshaw_graph .y_ticks text,
+.rickshawtwolines .rickshaw_graph .x_ticks_d3 text {
+  stroke: rgba(240, 240, 240, 0.7);
 }
 .globeElement {
   position: absolute;
@@ -10024,11 +10035,6 @@ a.navbar-brand.app-logo {
 }
 a.navbar-brand.app-logo span.viz {
   color: #a2b3c4;
-}
-body {
-  background: url(images/texture-noise.png);
-  margin: 0;
-  font-size: 14px;
 }
 #chart,
 #header,

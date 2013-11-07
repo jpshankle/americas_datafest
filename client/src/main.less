@@ -10,9 +10,15 @@
 
 @graphheight: 200px;
 
+@sidebarFontColor: rgba(240,240,240,0.7);
+@sidebarBackgroundColor: rgba(50,50,50,0.7);
+
 body {
   padding-top: 60px;
   overflow: hidden;
+  background: url(images/texture-noise.png);
+  margin: 0;
+  font-size: 14px;
 }
 
 #immiviz-container {
@@ -24,8 +30,8 @@ body {
 }
 
 #immiviz-content h1 {
-  background-color: rgba(50,50,50,0.7);
-  color: rgba(240,240,240,0.7);
+  background-color: @sidebarBackgroundColor;
+  color: @sidebarFontColor;
   font-size: 1.7em;
   display: block;
   padding: 15px 0;
@@ -43,7 +49,7 @@ body {
 .rickshawtwolines {
   position: relative;
   height: @graphheight;
-  background-color: rgba(50,50,50, 0.7);
+  background-color: @sidebarBackgroundColor;
   margin-bottom: 20px;
   .leftaxis {
     position: absolute;
@@ -60,6 +66,12 @@ body {
     left: 550px;
     height: @graphheight;
     width: 40px;
+  }
+
+  .rickshaw_graph .y_ticks path, .rickshaw_graph .x_ticks_d3 path,
+  .rickshaw_graph .y_ticks .tick, .rickshaw_graph .x_ticks_d3 .tick,
+  .rickshaw_graph .y_ticks text, .rickshaw_graph .x_ticks_d3 text {
+    stroke: @sidebarFontColor;
   }
 }
 
@@ -136,13 +148,6 @@ a.navbar-brand.app-logo {
 	span.viz {
 	    color: lighten(#8399b0, 10%);
 	}
-}
-
-
-body {
-  background: url(images/texture-noise.png);
-  margin: 0;
-  font-size: 14px;
 }
 
 #chart, #header, #footer {
