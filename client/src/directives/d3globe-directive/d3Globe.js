@@ -199,7 +199,9 @@ app.directive('d3Globe', [function () {
 			  if (activeFeature === d) return reset();
 
 			  activeFeature = d;
-			  scope.$parent.changeCountry({name: d.id, fullName: d.properties.name});
+			  console.log(scope);
+			  scope.$parent.selectedCountry = {name: d.id, fullName: d.properties.name};
+			  //scope.$parent.changeCountry({name: d.id, fullName: d.properties.name});
 			  svg.selectAll(".active").classed("active", false);
 			  d3.select(this).classed("active", active = d);
 
@@ -208,16 +210,11 @@ app.directive('d3Globe', [function () {
 			      "translate(" + projection.translate() + ")"
 			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / globeWidth, (b[1][1] - b[0][1]) / globeWidth) + ")"
 			      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
-			  pathArcs.transition().duration(750).attr("transform",
-			      "translate(" + projection.translate() + ")"
-			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / globeWidth, (b[1][1] - b[0][1]) / globeWidth) + ")"
-			      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
 			}
 
 			function reset() {
 			  feature.selectAll(".active").classed("active", active = false);
 			  feature.transition().duration(750).attr("transform", "");
-			  pathArcs.transition().duration(750).attr("transform", "");
 			}
 
 			function refresh(duration) {

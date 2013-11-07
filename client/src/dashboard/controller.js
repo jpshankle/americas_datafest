@@ -40,6 +40,6 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
         $scope.$apply();
     };
     $scope.$watch('selectedCountry', function() {
-        //console.log($scope.selectedCountry);
+        console.log($scope.selectedCountry);
     }, true);
 }]);
