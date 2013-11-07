@@ -118,7 +118,7 @@ app.directive('d3Globe', [function () {
 			  var b = path.bounds(d);
 			  feature.transition().duration(750).attr("transform",
 			      "translate(" + projection.translate() + ")"
-			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height) + ")"
+			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / globeWidth, (b[1][1] - b[0][1]) / globeWidth) + ")"
 			      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
 			}
 
