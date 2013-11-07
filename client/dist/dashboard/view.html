@@ -1,12 +1,21 @@
 <div class="row">
-	<div class="col-md-7">
-		<h2>GDP in Relation to Remitances</h2>
-		<h3>{{selectedCountry.fullName}}</h3>
-		<of-rickshaw lines="lineData"></of-rickshaw>
-	</div>
-	<div class="col-md-7">
-	<div id="immivizglobe">
+	<h1>The Cost of Migration</h1>
+</div>
+
+<div class="row">
+	<div class="col-md-8">
 		<d3-globe></d3-globe>
 	</div>
+	<div class="col-md-4">
+
+		<h3>{{selectedCountry.fullName}}</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">	
+		<of-rickshaw lines="lineData"></of-rickshaw>
+	</div>
+	<div class="col-md-6">	
+		<of-rickshaw lines="lineData"></of-rickshaw>
 	</div>
 </div>

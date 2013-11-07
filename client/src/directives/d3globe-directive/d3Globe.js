@@ -1,20 +1,23 @@
 app.directive('d3Globe', [function () {
 	return {
 		restrict: 'E',
-		templateUrl: '/directives/d3line-directive/view.html',
+		template: '<div class="globeElement"></div>',
 		scope: {
 			selectedCountry: '='
 		},
 		link: function (scope, element, attrs) {
-			element.empty();
+
+			var globeElement = element.children('.globeElement'),
+				globeWidth = globeElement.width(),
+				halfGlobeWidth = globeWidth / 2;
+			globeElement.empty();
+			globeElement.height(globeWidth);
 			var activeFeature = null;
-			var feature,
-			    height = 1280,
-			    width = 800;
+			var feature;
 
 			var projection = d3.geo.orthographic()
-			    .scale(380)
-			    .translate([height / 2, width / 2])
+			    .scale(halfGlobeWidth)
+			    .translate([halfGlobeWidth, halfGlobeWidth]);
 			    .rotate([-71.03,42.37])
 			    .clipAngle(90)
 			    .precision(.1);
@@ -34,9 +37,9 @@ app.directive('d3Globe', [function () {
 			var path = d3.geo.path()
 			    .projection(projection);
 
-			var svg = d3.select(element[0]).append("svg:svg")
-			    .attr("width", height)
-			    .attr("height", width)
+			var svg = d3.select(globeElement[0]).append("svg:svg")
+			    .attr("width", globeWidth)
+			    .attr("height", globeWidth)
 			    .on("mousedown", mousedown);
 
 			function makeShitHappen(){
