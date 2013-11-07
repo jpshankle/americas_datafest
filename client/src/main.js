@@ -18,3 +18,11 @@ app.config(['$routeProvider', function($routeProvider) {
         })
         .otherwise('/');
 }]);
+
+app.run(['$rootScope', function ($rootScope) {
+
+    $rootScope.selectedCountry = {
+        name: 'USA',
+        fullName: 'Please Select a Country'
+    };
+}]);

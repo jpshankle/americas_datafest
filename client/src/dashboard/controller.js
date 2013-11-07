@@ -24,13 +24,9 @@ app.controller('DashboardCtrl', ['$scope', '$rootScope', function ($scope, $root
                 };
             }
         }
-
-        $scope.changeCountry($rootScope.selectedCountry);
     });
 
-    $scope.changeCountry = function (selectedCountry) {
-        $rootScope.selectedCountry = selectedCountry;
-        $scope.lineData = allCountriesData[selectedCountry.name];
-        $scope.$apply();
-    };
+    $rootScope.$watch('selectedCountry', function() {
+       $scope.lineData = allCountriesData[$rootScope.selectedCountry.name];
+    }, true);
 }]);
