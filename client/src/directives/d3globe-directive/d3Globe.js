@@ -8,19 +8,21 @@ app.directive('d3Globe', [function () {
 		link: function (scope, element, attrs) {
 			element.empty();
 			var activeFeature = null;
-			var feature;
+			var feature,
+			    height = 1280,
+			    width = 800;
 
-
-			var projection = d3.geo.azimuthal()
+			var projection = d3.geo.orthographic()
 			    .scale(380)
-			    .origin([-71.03,42.37])
-			    .mode("orthographic")
-			    .translate([640, 400]);
+			    .translate([height / 2, width / 2])
+			    .rotate([-71.03,42.37])
+			    .clipAngle(90)
+			    .precision(.1);
 
-			var circle = d3.geo.greatCircle()
-			    .origin(projection.origin());
+			var circle = d3.geo.circle()
+			    .origin(projection.rotate());
 
-						// TODO fix d3.geo.azimuthal to be consistent with scale
+			// TODO fix d3.geo.azimuthal to be consistent with scale
 			var scale = {
 			  orthographic: 380,
 			  stereographic: 380,
@@ -33,8 +35,8 @@ app.directive('d3Globe', [function () {
 			    .projection(projection);
 
 			var svg = d3.select(element[0]).append("svg:svg")
-			    .attr("width", 1280)
-			    .attr("height", 800)
+			    .attr("width", height)
+			    .attr("height", width)
 			    .on("mousedown", mousedown);
 
 			function makeShitHappen(){
@@ -44,12 +46,14 @@ app.directive('d3Globe', [function () {
 				  feature = svg.selectAll("path")
 				    .data(collection.features)
 				    .enter().append("svg:path")
-				    .attr("d", clip);
+				    .attr("d", path);
 
 				  feature.append("svg:title")
 				      .text(function(d) { return d.properties.name; });
 				  feature.append("id")
 				      .text(function(d) { return d.id; });
+				  feature.on("click", click);
+				  /*
 				  feature.on("click", function(){
 				  	if (activeFeature !== null) { 
 				  		activeFeature.style("fill", "#8399b0");
@@ -60,6 +64,7 @@ app.directive('d3Globe', [function () {
 				  	//scope.selectedCountry.name = activeFeature.select("id")[0][0].textContent;
 				  	activeFeature.style("fill", "magenta");
 				  });
+				  */
 				});
 
 				d3.select(window)
@@ -78,15 +83,15 @@ app.directive('d3Globe', [function () {
 
 			function mousedown() {
 			  m0 = [d3.event.pageX, d3.event.pageY];
-			  o0 = projection.origin();
+			  o0 = projection.rotate();
 			  d3.event.preventDefault();
 			}
 
 			function mousemove() {
 			  if (m0) {
-			    var m1 = [d3.event.pageX, d3.event.pageY],
-			        o1 = [o0[0] + (m0[0] - m1[0]) / 8, o0[1] + (m1[1] - m0[1]) / 8];
-			    projection.origin(o1);
+			    var m1 = [d3.event.pageX, d3.event.pageY]
+			      , o1 = [o0[0] + (m1[0] - m0[0]) / 6, o0[1] + (m0[1] - m1[1]) / 6];
+			    projection.rotate(o1);
 			    circle.origin(o1)
 			    refresh();
 			  }
@@ -99,12 +104,28 @@ app.directive('d3Globe', [function () {
 			  }
 			}
 
-			function refresh(duration) {
-			  (duration ? feature.transition().duration(duration) : feature).attr("d", clip);
+			function click(d) {
+			  if (activeFeature === d) return reset();
+
+			  activeFeature = d;
+			  scope.$parent.changeCountry({name: d.id, fullName: d.properties.name});
+			  svg.selectAll(".active").classed("active", false);
+			  d3.select(this).classed("active", active = d);
+
+			  var b = path.bounds(d);
+			  feature.transition().duration(750).attr("transform",
+			      "translate(" + projection.translate() + ")"
+			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height) + ")"
+			      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
 			}
 
-			function clip(d) {
-			  return path(circle.clip(d));
+			function reset() {
+			  feature.selectAll(".active").classed("active", active = false);
+			  feature.transition().duration(750).attr("transform", "");
+			}
+
+			function refresh(duration) {
+			  (duration ? feature.transition().duration(duration) : feature).attr("d", path);
 			}
 
 			makeShitHappen();
