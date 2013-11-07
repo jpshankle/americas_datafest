@@ -48,6 +48,7 @@ app.directive('ofRickshaw', [function () {
 					var graph = new Rickshaw.Graph( {
 					    element: chart, 
 					    width: containingWidth,
+					    height: 150,
                         renderer: 'line',
                         interpolation: 'linear',
 					    series: [

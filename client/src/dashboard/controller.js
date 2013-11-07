@@ -1,4 +1,4 @@
-app.controller('DashboardCtrl', ['$scope', function ($scope) {
+app.controller('DashboardCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
     var i, c, year,
         allCountriesData = {};
 
@@ -25,21 +25,12 @@ app.controller('DashboardCtrl', ['$scope', function ($scope) {
             }
         }
 
-
-        $scope.selectedCountry = {
-            name: 'USA',
-            fullName: 'Please Select a Country'
-        };
-
-        $scope.changeCountry($scope.selectedCountry);
+        $scope.changeCountry($rootScope.selectedCountry);
     });
 
     $scope.changeCountry = function (selectedCountry) {
-        $scope.selectedCountry = selectedCountry;
+        $rootScope.selectedCountry = selectedCountry;
         $scope.lineData = allCountriesData[selectedCountry.name];
         $scope.$apply();
     };
-    $scope.$watch('selectedCountry', function() {
-        console.log($scope.selectedCountry);
-    }, true);
 }]);

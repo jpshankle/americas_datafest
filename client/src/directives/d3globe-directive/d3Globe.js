@@ -1,4 +1,4 @@
-app.directive('d3Globe', [function () {
+app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 	return {
 		restrict: 'E',
 		template: '<div class="globeElement"></div>',
@@ -199,9 +199,7 @@ app.directive('d3Globe', [function () {
 			  if (activeFeature === d) return reset();
 
 			  activeFeature = d;
-			  console.log(scope);
-			  scope.$parent.selectedCountry = {name: d.id, fullName: d.properties.name};
-			  //scope.$parent.changeCountry({name: d.id, fullName: d.properties.name});
+			  $rootScope.selectedCountry = {name: d.id, fullName: d.properties.name};
 			  svg.selectAll(".active").classed("active", false);
 			  d3.select(this).classed("active", active = d);
 

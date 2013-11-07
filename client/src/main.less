@@ -8,7 +8,7 @@
 
 @headings-font-weight: 100;
 
-@graphheight: 400px;
+@graphheight: 200px;
 
 body {
   padding-top: 60px;
@@ -23,6 +23,17 @@ body {
   z-index: 200;
 }
 
+#immiviz-content h1 {
+  background-color: rgba(50,50,50,0.7);
+  color: rgba(240,240,240,0.7);
+  font-size: 1.7em;
+  display: block;
+  padding: 15px 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
 #map-canvas {
   position: relative;
   height: 300px;
@@ -32,6 +43,8 @@ body {
 .rickshawtwolines {
   position: relative;
   height: @graphheight;
+  background-color: rgba(50,50,50, 0.7);
+  margin-bottom: 20px;
   .leftaxis {
     position: absolute;
     height: @graphheight;
