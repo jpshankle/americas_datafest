@@ -200,7 +200,7 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 
 			  activeFeature = d;
 			  $rootScope.selectedCountry = {name: d.id, fullName: d.properties.name};
-			  $rootScope.$digest();
+			  $rootScope.$apply();
 			  svg.selectAll(".active").classed("active", false);
 			  d3.select(this).classed("active", active = d);
 
