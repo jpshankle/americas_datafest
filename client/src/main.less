@@ -12,6 +12,15 @@
 
 body {
   padding-top: 60px;
+  overflow: hidden;
+}
+
+#immiviz-container {
+  padding: 0 30px;
+}
+
+#immiviz-content {
+  z-index: 200;
 }
 
 #map-canvas {
@@ -44,9 +53,7 @@ body {
 .globeElement {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 75%;
-  z-index: -10000;
+  z-index: 100;
   svg {
     position: relative;
     pointer-events: all;
@@ -91,7 +98,7 @@ body {
 
 
 @navbar-height: 50px;
-@navbar-inverse-bg: #447;
+@navbar-inverse-bg: rgba(68, 68, 119, 0.70);
 @navbar-inverse-link-color: #ddd;
 @navbar-inverse-link-hover-color:           #eee;
 @navbar-inverse-link-disabled-color:        #444;

@@ -1,3 +1,6 @@
+var body = $('body');
+body.height(window.innerHeight);
+
 var app = angular.module('immiviz', [
     'ngRoute',
     'google-maps'
@@ -585,10 +588,13 @@ app.config(['$routeProvider', function($routeProvider) {
 		link: function (scope, element, attrs) {
 
 			var globeElement = element.children('.globeElement'),
-				globeWidth = globeElement.width(),
+				globeWidth = body.height() * 2,
 				halfGlobeWidth = globeWidth / 2;
+
+				console.log(globeWidth)
 			globeElement.empty();
 			globeElement.height(globeWidth);
+			globeElement.css('left', '-' + halfGlobeWidth / 2 + 'px');
 			var activeFeature = null;
 			var feature;
 

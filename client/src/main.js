@@ -1,3 +1,6 @@
+var body = $('body');
+body.height(window.innerHeight);
+
 var app = angular.module('immiviz', [
     'ngRoute',
     'google-maps'

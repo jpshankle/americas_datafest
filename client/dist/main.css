@@ -3986,8 +3986,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #333333;
 }
 .navbar-inverse {
-  background-color: #444477;
-  border-color: #313157;
+  background-color: rgba(68, 68, 119, 0.7);
+  border-color: rgba(49, 49, 87, 0.7);
 }
 .navbar-inverse .navbar-brand {
   color: #dddddd;
@@ -4012,7 +4012,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
   color: #eeeeee;
-  background-color: #313157;
+  background-color: rgba(49, 49, 87, 0.7);
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
@@ -4025,19 +4025,19 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #313157;
+  background-color: rgba(49, 49, 87, 0.7);
 }
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #eeeeee;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
-  border-color: #373760;
+  border-color: rgba(55, 55, 96, 0.7);
 }
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #313157;
+  background-color: rgba(49, 49, 87, 0.7);
   color: #eeeeee;
 }
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
@@ -4056,7 +4056,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {
-    border-color: #313157;
+    border-color: rgba(49, 49, 87, 0.7);
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
     color: #dddddd;
@@ -4070,7 +4070,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #eeeeee;
-    background-color: #313157;
+    background-color: rgba(49, 49, 87, 0.7);
   }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -9930,6 +9930,13 @@ td.visible-print {
 }
 body {
   padding-top: 60px;
+  overflow: hidden;
+}
+#immiviz-container {
+  padding: 0 30px;
+}
+#immiviz-content {
+  z-index: 200;
 }
 #map-canvas {
   position: relative;
@@ -9959,9 +9966,7 @@ body {
 .globeElement {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 75%;
-  z-index: -10000;
+  z-index: 100;
 }
 .globeElement svg {
   position: relative;
