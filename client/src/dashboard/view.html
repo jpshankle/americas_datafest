@@ -11,32 +11,34 @@
               <p>Get cost information for a country using the map or typing in the search box.</p>
             </div>
         </div>
-		<div class="row" ng-show="countries.selectedCountry.name">
-			<div class="col-md-12">
-				<h1 class="text-center">{{countries.selectedCountry.name}}</h1>
-			</div>
-		</div>
-        <div class="row">
-          	<div class="col-md-6">
-            	<div class="big-number text-center">
-              		<div class="big-number-number">$8.49</div>
-              		<div class="big-number-info">Average Transaction Cost</div>
-          		</div>
-          	</div>
-          	<div class="col-md-6">
-            	<div class="big-number text-center">
-              		<div class="big-number-number">12%</div>
-              		<div class="big-number-info">% Living on less than $1.25 a Day</div>
-          		</div>
-          	</div>
-        </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="text-center">Kilograms of Rice Per Transaction Cost</h4>
-          <span ng-repeat="r in rice"
-                class="glyphicon glyphicon-tower">
-          </span>
-        </div>
-      </div>
-	</div>
+        <div ng-show="countries.selectedCountry.name">
+          <div class="row">
+              <div class="col-md-12">
+                  <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="big-number text-center">
+                      <div class="big-number-number">$8.49</div>
+                      <div class="big-number-info">Average Transaction Cost</div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="big-number text-center">
+                      <div class="big-number-number">12%</div>
+                      <div class="big-number-info">% Living on less than $1.25 a Day</div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h4>Kilograms of Rice Per Transaction Cost</h4>
+              <span ng-repeat="r in numberOfItems(rice) track by $index">
+                <span class="glyphicon glyphicon-tower">
+              </span>
+              </span>
+            </div>
+          </div>
+	   </div>
 </div>
