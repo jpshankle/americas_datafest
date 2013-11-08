@@ -93,13 +93,16 @@ body {
   position: absolute;
   display: none;
   pointer-events: none;
-  background: #fff;
-  padding: 5px;
-  text-align: left;
-  border: solid #ccc 1px;
-  color: #666;
   font-size: 14px;
-  font-family: sans-serif;
+  font-family: @font-family-base;
+
+  max-width: @tooltip-max-width;
+  padding: 3px 8px;
+  color: @tooltip-color;
+  text-align: center;
+  text-decoration: none;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
 }
 
 #immiviz-content h1 {
