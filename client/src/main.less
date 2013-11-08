@@ -40,6 +40,7 @@ body {
 }
 
 #immiviz-content {
+  padding-top: 10px;
   z-index: 1030;
   color: #fff;
   /*background:#f8f8f8;*/
@@ -62,7 +63,16 @@ body {
   //opacity: 0.95;
 }
 
-.ng-enter, ng-leave {
+.nav {
+  display: table;
+  margin: auto;
+}
+
+.icon-link:hover {
+  text-decoration: none;
+}
+
+.ng-enter, .ng-leave {
   -webkit-transition: opacity 2s;
   transition: opacity 2s;
 }
@@ -76,10 +86,6 @@ body {
 }
 
 .ng-leave {
-  opacity: 1;
-}
-
-.ng-leave-active {
   opacity: 0;
 }
 
@@ -110,7 +116,7 @@ body {
 }
 
 .numbers-stat {
-  color: @darkBlue;
+  color: @white;
 }
 
 .numbers-stat-number {
