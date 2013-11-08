@@ -9941,8 +9941,10 @@ body {
 #immiviz-content {
   z-index: 200;
 }
-#immiviz-content h1 {
+#immiviz-content h1,
+.big-number {
   background-color: rgba(50, 50, 50, 0.7);
+  border-radius: 5px;
   color: rgba(240, 240, 240, 0.7);
   font-size: 1.7em;
   display: block;
@@ -9959,6 +9961,7 @@ body {
   position: relative;
   height: 200px;
   background-color: rgba(50, 50, 50, 0.7);
+  border-radius: 5px;
   margin-bottom: 20px;
 }
 .rickshawtwolines .leftaxis {

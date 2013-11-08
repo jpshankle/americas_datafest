@@ -13,6 +13,7 @@ module.exports = function (grunt) {
                     '../client/bower_components/angular/angular.min.js',
                     '../client/bower_components/angular-route/angular-route.min.js',
                     '../client/bower_components/angular-resource/angular-resource.min.js',
+                    '../client/bower_components/angular-animate/angular-animate.min.js',
                     '../client/bower_components/bootstrap/js/affix.js',
                     '../client/bower_components/bootstrap/js/alert.js',
                     '../client/bower_components/bootstrap/js/button.js',

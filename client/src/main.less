@@ -13,6 +13,8 @@
 @sidebarFontColor: rgba(240,240,240,0.7);
 @sidebarBackgroundColor: rgba(50,50,50,0.7);
 
+@mapContentBorder: 5px;
+
 body {
   padding-top: 60px;
   overflow: hidden;
@@ -29,8 +31,9 @@ body {
   z-index: 200;
 }
 
-#immiviz-content h1 {
+#immiviz-content h1, .big-number {
   background-color: @sidebarBackgroundColor;
+  border-radius: @mapContentBorder;
   color: @sidebarFontColor;
   font-size: 1.7em;
   display: block;
@@ -38,7 +41,6 @@ body {
   text-align: center;
   margin-bottom: 20px;
 }
-
 
 #map-canvas {
   position: relative;
@@ -50,6 +52,7 @@ body {
   position: relative;
   height: @graphheight;
   background-color: @sidebarBackgroundColor;
+  border-radius: @mapContentBorder;
   margin-bottom: 20px;
   .leftaxis {
     position: absolute;

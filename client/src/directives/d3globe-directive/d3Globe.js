@@ -11,7 +11,6 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 				globeWidth = body.width() * 1.25,
 				halfGlobeWidth = globeWidth / 2;
 
-				console.log(globeWidth)
 			globeElement.empty();
 			globeElement.height(globeWidth);
 			globeElement.css('left', '-' + body.width() / 4 + 'px');
