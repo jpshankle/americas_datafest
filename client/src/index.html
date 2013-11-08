@@ -8,7 +8,20 @@
 </head>
 <body>
     <a class="app-logo" href="/#/">Immi<span class="viz">Viz</span></a>
-    <div id="immiviz-container" ng-view></div>
+    <div id="immiviz-container">
+      <div class="row">
+        <div class="immiviz-globe-spaceholder col-md-8">
+          <div class="pull-right countrySelector">
+            <input class="form-control typeahead" type="search" placeholder="Search for Country">
+          </div>
+          <a class="app-logo" href="/#/">Immi
+            <span class="viz">Viz</span>
+          </a>
+          <d3-globe></d3-globe>
+        </div>
+        <div id="immiviz-content" class="col-md-4" ng-view></div>
+    </div>
+  </div>
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8qmL1emUQPAg9Lq4r0LxywAZ-l-naJEg&sensor=false">
     </script>
