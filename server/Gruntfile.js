@@ -62,7 +62,11 @@ module.exports = function (grunt) {
                     '*.json',
                     '*.tsv',
                     '*.csv',
-                    '**/*.kml'
+                    '**/*.kml',
+                    '**/*.eot',
+                    '**/*.svg',
+                    '**/*.ttf',
+                    '**/*.woff'
                 ],
                 dest: '../client/dist/'
             },
