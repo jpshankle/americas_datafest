@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,700);
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "colorbrewer.less";
 
@@ -10,8 +10,8 @@
 
 @graphheight: 200px;
 
-@sidebarFontColor: rgba(240,240,240,0.7);
-@sidebarBackgroundColor: rgba(50,50,50,0.7);
+@sidebarFontColor: rgba(240,240,240,1);
+@sidebarBackgroundColor: rgba(50,50,50,1);
 
 body {
   padding-top: 60px;
@@ -26,7 +26,25 @@ body {
 }
 
 #immiviz-content {
-  z-index: 200;
+  z-index: 1030;
+  /*background:#f8f8f8;*/
+  //background-color: #FFF;
+  background-color: rgba(68, 68, 119, 0.95);
+  box-shadow:0 1px 0 rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.1);
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+    overflow:hidden;
+  display:block;
+  /*
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+  */
+  //opacity: 0.95;
 }
 
 #immiviz-content h1 {
@@ -49,7 +67,6 @@ body {
 .rickshawtwolines {
   position: relative;
   height: @graphheight;
-  background-color: @sidebarBackgroundColor;
   margin-bottom: 20px;
   .leftaxis {
     position: absolute;
@@ -82,18 +99,19 @@ body {
   svg {
     position: relative;
     pointer-events: all;
+    z-index: 200;
   }
   circle {
     fill: #dbe4f0;
   }
     
   path {
-    fill: #8399b0;
+    fill: #7B7B80;
     stroke: #fff;
   }
   
   path.active {
-    fill: magenta;
+    fill: #FB0043;
   }
   .hint {
     position: absolute;
@@ -138,15 +156,19 @@ body {
 @navbar-inverse-toggle-border-color:        @navbar-inverse-link-hover-color;
 
 
-a.navbar-brand.app-logo {
+.app-logo, .app-logo:hover {
+  position: fixed;
+  text-decoration: none;
+  top: 5px;
+  left: 10px;
 	text-align: center;
-	color: #FFFFFF;
-	text-shadow: black 0.03em 0.03em 0.06em;
+	color: #000;
+	text-shadow: white 0.03em 0.03em 0.06em;
     font-size: 24px;
     font-family: @font-family-base;
-	font-weight: 100;
+	font-weight: 200;
 	span.viz {
-	    color: lighten(#8399b0, 10%);
+	    color: #3DBCF3;
 	}
 }
 
@@ -213,13 +235,4 @@ line {
 
 .class, .special {
   color: #1181B8;
-}
-
-a:link, a:visited {
-  color: #000;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #666;
 }

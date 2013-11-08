@@ -14,7 +14,7 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 				console.log(globeWidth)
 			globeElement.empty();
 			globeElement.height(globeWidth);
-			globeElement.css('left', '-' + body.width() / 4 + 'px');
+			globeElement.css('left', '-' + body.width() / 3 + 'px');
 			var activeFeature = null;
 			var feature, pathArcs;
 
@@ -167,8 +167,31 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 
 			    });
 
+				d3.select(window).on('resize', resize);
+
 			}
 
+			function resize() {
+			    // adjust things when the window size changes
+			    globeWidth = body.width() * 1.25,
+				halfGlobeWidth = globeWidth / 2;
+			    width = globeWidth;
+			    height = globeWidth;
+
+			    // update projection
+			    projection
+			        .translate([width / 2, height / 2])
+			        .scale(width);
+
+			    // resize the map container
+			    svg
+			        .style('width', width + 'px')
+			        .style('height', height + 'px');
+
+			    // resize the map
+			    svg.select('path').attr('d', path);
+			    svg.selectAll('.arc').attr('d', path);
+			}
 
 			function mousedown() {
 			  m0 = [d3.event.pageX, d3.event.pageY];
@@ -203,12 +226,21 @@ app.directive('d3Globe', ['$rootScope', function ($rootScope) {
 			  $rootScope.$apply();
 			  svg.selectAll(".active").classed("active", false);
 			  d3.select(this).classed("active", active = d);
-
 			  var b = path.bounds(d);
-			  feature.transition().duration(750).attr("transform",
+			  m10 = [-(b[1][0] + b[0][0]) / 2, -(b[1][1] + b[0][1]) / 2];
+			  o10 = projection.rotate();
+			  var m11 = [-(b[1][0] + b[0][0]) / 2, -(b[1][1] + b[0][1]) / 2]
+			      , o11 = [o10[0] + (m11[0] - m10[0]) / 6, o10[1] + (m10[1] - m11[1]) / 6];
+			    projection.center(o11);
+			    circle.origin(o11)
+			    refresh();
+
+
+			  /*feature.transition().duration(750).attr("transform",
 			      "translate(" + projection.translate() + ")"
-			      + "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / globeWidth, (b[1][1] - b[0][1]) / globeWidth) + ")"
+			      //+ "scale(" + .95 / Math.max((b[1][0] - b[0][0]) / globeWidth, (b[1][1] - b[0][1]) / globeWidth) + ")"
 			      + "translate(" + -(b[1][0] + b[0][0]) / 2 + "," + -(b[1][1] + b[0][1]) / 2 + ")");
+			  */
 			}
 
 			function reset() {
