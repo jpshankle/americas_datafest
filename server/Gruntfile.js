@@ -9,6 +9,9 @@ module.exports = function (grunt) {
                 src: [
                     '../client/bower_components/jquery/jquery.min.js',
                     '../client/bower_components/d3/d3.js',
+                    '../client/bower_components/queue-async/queue.min.js',
+                    '../client/bower_components/topojson/topojson.js',
+                    '../client/bower_components/typeahead.js/dist/typeahead.min.js',
                     '../client/bower_components/rickshaw/rickshaw.min.js',
                     '../client/bower_components/angular/angular.min.js',
                     '../client/bower_components/angular-route/angular-route.min.js',

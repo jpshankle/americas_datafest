@@ -20,9 +20,8 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.run(['$rootScope', function ($rootScope) {
-
-    $rootScope.selectedCountry = {
-        name: 'USA',
-        fullName: 'Please Select a Country'
+    $rootScope.countries={
+        selectedCountry: {},
+        countryData: {}
     };
 }]);

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,100,200,700);
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "colorbrewer.less";
+@import "bootstrap-typeahead.less";
 
 @font-family-sans-serif: 'Raleway', sans-serif;
 @font-family-serif: 'Droid Serif', serif;
@@ -16,7 +17,6 @@
 @mapContentBorder: 5px;
 
 body {
-  padding-top: 60px;
   overflow: hidden;
   background: url(images/texture-noise.png);
   margin: 0;
@@ -49,6 +49,25 @@ body {
   //opacity: 0.95;
 }
 
+.countrySelector {
+  position: relative;
+  top: 10px;
+}
+
+.countryTooltip {
+  z-index: 1035;
+  position: absolute;
+  display: none;
+  pointer-events: none;
+  background: #fff;
+  padding: 5px;
+  text-align: left;
+  border: solid #ccc 1px;
+  color: #666;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
 #immiviz-content h1, .big-number {
   background-color: @sidebarBackgroundColor;
   border-radius: @mapContentBorder;
@@ -58,12 +77,6 @@ body {
   padding: 15px 0;
   text-align: center;
   margin-bottom: 20px;
-}
-
-#map-canvas {
-  position: relative;
-  height: 300px;
-  display: block;
 }
 
 .rickshawtwolines {
@@ -109,7 +122,7 @@ body {
     fill: #dbe4f0;
   }
     
-  path {
+  path.land {
     fill: #7B7B80;
     stroke: #fff;
   }
@@ -117,6 +130,7 @@ body {
   path.active {
     fill: #FB0043;
   }
+
   .hint {
     position: absolute;
     right: 0;
