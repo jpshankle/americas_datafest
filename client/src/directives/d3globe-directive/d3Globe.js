@@ -12,6 +12,7 @@ app.directive('d3Globe', ['$rootScope',
                     vertBuffer = 30,
                     height = window.innerHeight - vertBuffer,
                     width = height,
+                    horizBuffer = ($('.immiviz-globe-spaceholder').width() - width) / 2,
                     sens = 0.25,
                     focused;
 
@@ -19,7 +20,7 @@ app.directive('d3Globe', ['$rootScope',
                 d3.select(globeElement[0])
                     .style('width', width + 'px')
                     .style('height', height + 'px');
-                globeElement.css('left', +vertBuffer + 'px');
+                globeElement.css('left', +horizBuffer + 'px');
                 globeElement.css('top', +vertBuffer / 2 + 'px');
 
                 //Setting projection
@@ -188,7 +189,8 @@ app.directive('d3Globe', ['$rootScope',
                     console.log("resize called!");
                     // adjust things when the window size changes
                     height = window.innerHeight - vertBuffer,
-                    width = height;
+                    width = height,
+                    horizBuffer = ($('.immiviz-globe-spaceholder').width() - width) / 2;
                     console.log(height);
                     // update projection
                     projection
@@ -197,8 +199,7 @@ app.directive('d3Globe', ['$rootScope',
 
                     // resize the map container
                     d3.select(globeElement[0])
-                        .style('width', width + 'px')
-                        .style('height', height + 'px');
+                        .style('left', +horizBuffer + 'px');
                     svg
                         .attr("width", width)
                         .attr("height", height)
