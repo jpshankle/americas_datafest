@@ -6,15 +6,28 @@ var app = angular.module('immiviz', [
     'google-maps'
 ]);
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$locationProvider','$routeProvider', function($locationProvider, $routeProvider) {
+    $locationProvider.hashPrefix('!');
     $routeProvider
-        .when('/', {
-            controller: 'DashboardCtrl',
-            templateUrl: '/dashboard/view.html'
+      .when('/', {
+            controller: 'HomeCtrl',
+            templateUrl: '/home/view.html'
         })
-        .when('/map', {
-            controller: 'MapCtrl',
-            templateUrl: '/map/view.html'
+        .when('/numbers', {
+            controller: 'NumbersCtrl',
+            templateUrl: '/numbers/view.html'
+        })
+        .when('/stories', {
+            controller: 'StoriesCtrl',
+            templateUrl: '/stories/view.html'
+        })
+        .when('/data', {
+            controller: 'DataCtrl',
+            templateUrl: '/data/view.html'
+        })
+        .when('/about', {
+            controller: 'AboutCtrl',
+            templateUrl: '/about/view.html'
         })
         .otherwise('/');
 }]);

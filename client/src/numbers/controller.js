@@ -1,4 +1,4 @@
-app.controller('DashboardCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+app.controller('NumbersCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
   
     $scope.rice = 12;
     $scope.numberOfItems = function (items) {

@@ -18,6 +18,12 @@
 @red: #FF3737;
 @gray: #8E8E93;
 
+@link-color: @darkBlue;
+@link-hover-color: darken(@link-color, 15%);
+
+@nav-pills-active-link-hover-bg: transparent;
+@nav-pills-active-link-hover-color: @white;
+
 @headings-font-weight: 100;
 
 @graphheight: 200px;
@@ -59,6 +65,10 @@ body {
   //opacity: 0.95;
 }
 
+#immiviz-content-ngview {
+  
+}
+
 .countrySelector {
   position: relative;
   top: 10px;
@@ -82,6 +92,19 @@ body {
   color: @white;
 }
 
+#immiviz-nav {
+  position: absolute;
+  width: 100%;
+  bottom:20px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+#immiviz-nav .nav-pills {
+  display: table;
+  margin: auto;
+}
+
 .big-number {
   color: @darkBlue;
 }
@@ -92,6 +115,11 @@ body {
 
 .big-number-info {
   font-size: .8em;
+}
+
+.rice {
+  display: table;
+  margin: auto;
 }
 
 .rickshawtwolines {
