@@ -90,15 +90,22 @@ app.directive('d3Globe', ['$rootScope',
 
                     $rootScope.countries.countryData = allCountriesData;
 
-                    $('.typeahead').typeahead({
+                    var myDataset = new Dataset({
                         name: 'countries',
                         local: typeaheadData,
                         valueKey: 'name'
-                    })
-                        .on('typeahead:selected', function(event, selectedItem) {
-                            selectCountry(selectedItem);
-                            event.currentTarget.value = '';
-                        });
+                    });
+                    $('.typeahead').typeahead({
+                    	autoselect: true,
+                    	sections: {
+    						hightlight: true,
+    						source: myDataset
+  						}
+  					})
+                    .on('typeahead:selected', function(event, selectedItem) {
+                        selectCountry(selectedItem);
+                        event.currentTarget.value = '';
+                    });
 
                     //Drawing countries on the globe
 
