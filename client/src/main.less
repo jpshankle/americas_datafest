@@ -62,6 +62,27 @@ body {
   //opacity: 0.95;
 }
 
+.ng-enter, ng-leave {
+  -webkit-transition: opacity 2s;
+  transition: opacity 2s;
+}
+
+.ng-enter {
+  opacity: 0;
+}
+
+.ng-enter-active {
+  opacity: 1;
+}
+
+.ng-leave {
+  opacity: 1;
+}
+
+.ng-leave-active {
+  opacity: 0;
+}
+
 .countrySelector {
   position: relative;
   top: 10px;
