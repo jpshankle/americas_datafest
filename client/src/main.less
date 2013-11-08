@@ -11,14 +11,13 @@
 
 @graphheight: 200px;
 
-@sidebarFontColor: rgba(240,240,240,1);
-@sidebarBackgroundColor: rgba(50,50,50,1);
+@sidebarFontColor: #50C9F6;
+@sidebarBackgroundColor: rgba(50,50,50,.95);
 
 @mapContentBorder: 5px;
 
 body {
   overflow: hidden;
-  background: url(images/texture-noise.png);
   margin: 0;
   font-size: 14px;
 }
@@ -29,9 +28,10 @@ body {
 
 #immiviz-content {
   z-index: 1030;
+  color: #fff;
   /*background:#f8f8f8;*/
   //background-color: #FFF;
-  background-color: rgba(68, 68, 119, 0.95);
+  background-color: @sidebarBackgroundColor;
   box-shadow:0 1px 0 rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.1);
   position: fixed;
   top: 0px;
@@ -68,22 +68,25 @@ body {
   font-family: sans-serif;
 }
 
-#immiviz-content h1, .big-number {
-  background-color: @sidebarBackgroundColor;
-  border-radius: @mapContentBorder;
-  color: @sidebarFontColor;
-  font-size: 1.7em;
-  display: block;
-  padding: 15px 0;
-  text-align: center;
-  margin-bottom: 20px;
+#immiviz-content h1 {
+  color: #fff;
+}
+
+.big-number {
+  color: #007CF7;
+}
+
+.big-number-number {
+  font-size: 3em;
+}
+
+.big-number-info {
+  font-size: .8em;
 }
 
 .rickshawtwolines {
   position: relative;
   height: @graphheight;
-  background-color: @sidebarBackgroundColor;
-  border-radius: @mapContentBorder;
   margin-bottom: 20px;
   .leftaxis {
     position: absolute;

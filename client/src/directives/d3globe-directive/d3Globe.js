@@ -97,6 +97,7 @@ app.directive('d3Globe', ['$rootScope',
                     })
                         .on('typeahead:selected', function(event, selectedItem) {
                             selectCountry(selectedItem);
+                            event.currentTarget.value = '';
                         });
 
                     //Drawing countries on the globe
