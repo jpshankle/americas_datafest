@@ -1,0 +1,42 @@
+<div class="row" ng-hide="countries.selectedCountry.name">
+  <div class="col-md-12">
+    <h1 class="text-center">Select A Country</h1>
+    <p>Get cost information for a country using the map or typing in the search box.</p>
+  </div>
+</div>
+<div ng-show="countries.selectedCountry.name">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="numbers-stat text-center">
+        <div class="numbers-stat-number">$8.49</div>
+        <div class="numbers-stat-info">Average Transaction Cost</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="numbers-stat text-center">
+        <div class="numbers-stat-number">12%</div>
+        <div class="numbers-stat-info">% Living on less than $1.25 a Day</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="numbers-stat">
+          <div class="rice">
+          <span ng-repeat="r in numberOfItems(rice) track by $index">
+            <i class="icon-lightbulb"></i>
+            <br ng-if="($index + 1) % 5 == 0">
+          </span>
+        </div>
+        <div class="numbers-stat-info text-center">Kg of Rice Per Transaction Cost</div>
+      </div>
+    </div>
+  </div>
+</div>
