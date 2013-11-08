@@ -73,20 +73,20 @@ body {
 }
 
 .ng-enter, .ng-leave {
-  -webkit-transition: opacity 2s;
-  transition: opacity 2s;
+  -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
 }
 
 .ng-enter {
-  opacity: 0;
+  left: 100%;
 }
 
 .ng-enter-active {
-  opacity: 1;
+  left: 0;
 }
 
 .ng-leave {
-  opacity: 0;
+  left: -100%;
 }
 
 .countrySelector {
