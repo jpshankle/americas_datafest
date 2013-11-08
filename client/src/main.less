@@ -7,11 +7,20 @@
 @font-family-serif: 'Droid Serif', serif;
 @font-family-base: @font-family-sans-serif;
 
+@white: #fff;
+@lightBlue: #50C9F6;
+@yellow: #FFCB43;
+@orange: #FF9432;
+@pink: #FF2956;
+@darkBlue: #007CF7;
+@green: #31D973;
+@red: #FF3737;
+@gray: #8E8E93;
+
 @headings-font-weight: 100;
 
 @graphheight: 200px;
 
-@sidebarFontColor: #50C9F6;
 @sidebarBackgroundColor: rgba(50,50,50,.95);
 
 @mapContentBorder: 5px;
@@ -69,11 +78,11 @@ body {
 }
 
 #immiviz-content h1 {
-  color: #fff;
+  color: @white;
 }
 
 .big-number {
-  color: #007CF7;
+  color: @darkBlue;
 }
 
 .big-number-number {
@@ -108,7 +117,7 @@ body {
   .rickshaw_graph .y_ticks path, .rickshaw_graph .x_ticks_d3 path,
   .rickshaw_graph .y_ticks .tick, .rickshaw_graph .x_ticks_d3 .tick,
   .rickshaw_graph .y_ticks text, .rickshaw_graph .x_ticks_d3 text {
-    stroke: @sidebarFontColor;
+    stroke: @white;
   }
 }
 
@@ -126,12 +135,12 @@ body {
   }
     
   path.land {
-    fill: #7B7B80;
-    stroke: #fff;
+    fill: @gray;
+    stroke: @white;
   }
   
   path.active {
-    fill: #FB0043;
+    fill: @green;
   }
 
   .hint {
@@ -160,23 +169,6 @@ body {
   }
 }
 
-
-@navbar-height: 50px;
-@navbar-inverse-bg: rgba(68, 68, 119, 0.70);
-@navbar-inverse-link-color: #ddd;
-@navbar-inverse-link-hover-color:           #eee;
-@navbar-inverse-link-disabled-color:        #444;
-
-// Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          @navbar-inverse-link-hover-color;
-
-// Inverted navbar toggle
-@navbar-inverse-toggle-hover-bg:            darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-toggle-icon-bar-bg:         @navbar-inverse-link-hover-color;
-@navbar-inverse-toggle-border-color:        @navbar-inverse-link-hover-color;
-
-
 .app-logo, .app-logo:hover {
   position: fixed;
   text-decoration: none;
@@ -189,7 +181,7 @@ body {
     font-family: @font-family-base;
 	font-weight: 200;
 	span.viz {
-	    color: #3DBCF3;
+	    color: @lightBlue;
 	}
 }
 
@@ -207,7 +199,7 @@ body {
 }
 
 #header.inverted, #footer.inverted {
-  color: #fff;
+  color: @white;
   text-shadow: 0 1px 4px #000;
 }
 
