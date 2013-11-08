@@ -30,8 +30,6 @@ module.exports = function (grunt) {
                     '../client/bower_components/bootstrap/js/scrollspy.js',
                     '../client/bower_components/bootstrap/js/tab.js',
                     '../client/bower_components/bootstrap/js/transition.js'
-                    
-                    
                 ],
                 dest: '../client/dist/libs.js'
             },
@@ -76,6 +74,14 @@ module.exports = function (grunt) {
                 ],
                 dest: '../client/dist/'
             },
+            bootstrap: {
+              cwd: '../client/bower_components/bootstrap/',
+              expand: true,
+              src: [
+                'fonts/*'
+              ],
+              dest: '../client/dist/'
+            }
         },
         watch: {
             srcfiles: {
