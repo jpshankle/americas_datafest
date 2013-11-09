@@ -206,13 +206,10 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                 scope.startTour(2500);
 
                 function resize() {
-
-                    console.log("resize called!");
                     // adjust things when the window size changes
                     height = window.innerHeight - vertBuffer,
                     width = height,
                     horizBuffer = ($('.immiviz-globe-spaceholder').width() - width) / 2;
-                    console.log(height);
                     // update projection
                     projection
                         .translate([width / 2, height / 2])

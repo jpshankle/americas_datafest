@@ -7,9 +7,26 @@
   </div>
 </div>
 
-<div class="row immiviz-sidebar-view-content">
+<div class="row immiviz-sidebar-view-content" ng-hide="countries.selectedCountry.name">
   <div class="col-md-12">
     <h1 class="text-center">Choose A Story</h1>
-    <p>Hundreds of millions of people around the globe survive on remittances, money sent to them from family and others outside of the country they are living in. On Immiviz we want to show these costs to start a conversation about this issue.</p>
+    <p>What impact do remittances have on the people and communities who receive them? Click on a highlighted country to find out more about the human side of remittances.</p>
+  </div>
+</div>
+<div class="row immiviz-sidebar-view-content" ng-show="countries.selectedCountry.name">
+  <div class="row immiviz-sidebar-view-content">
+    <div class="col-md-12">
+      <h1 class="text-center" class="forward-button">{{story.country}}</h1>
+    </div>
+  </div>
+  <div class="row immiviz-sidebar-view-content">
+    <div class="col-md-12">
+      <p>{{story.story}}</p>
+    </div>
+  </div>
+  <div class="row immiviz-sidebar-view-content">
+    <div class="col-md-12">
+      <a href="{{story.link}}">{{story.title}}</a>
+    </div>
   </div>
 </div>

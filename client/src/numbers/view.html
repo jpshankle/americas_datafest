@@ -12,16 +12,16 @@
         <p>Get cost information for a country using the map or typing in the search box.</p>
     </div>
   </div>
-  <div ng-show="countries.selectedCountry.name">
+  <div ng-show="countries.selectedCountry.name" class="forward-button">
     <div class="row">
       <div class="col-md-12">
-        <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+        <h1 class="text-center" class="forward-button">{{countries.selectedCountry.name}}</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="numbers-stat text-center">
-          <div class="numbers-stat-number">$8.49</div>
+          <div class="numbers-stat-number">${{cost}}</div>
           <div class="numbers-stat-info">Average Transaction Cost</div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="numbers-stat text-center">
-          <div class="numbers-stat-number">12%</div>
+          <div class="numbers-stat-number">{{percent}}%</div>
           <div class="numbers-stat-info">% Living on less than $1.25 a Day</div>
         </div>
       </div>
@@ -38,7 +38,7 @@
       <div class="col-md-12">
           <div class="numbers-stat">
             <div class="rice">
-            <span ng-repeat="r in numberOfItems(rice) track by $index">
+            <span ng-repeat="r in rice track by $index">
               <i class="icon-food"></i>
               <br ng-if="($index + 1) % 5 == 0">
             </span>

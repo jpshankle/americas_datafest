@@ -1,0 +1,86 @@
+[
+  {
+    "country": "Dominican Republic",
+    "story": "Wendy is one of millions of Dominicans for whom remittances are a vital lifeline. With two sons and a retired mother to support, the monthly sum she recieves from her father in Miami helps her to pay her daily living costs: electricity, food and her sons’ schooling.",
+    "link": "http://www.worldbank.org/en/news/feature/2013/10/04/remesas-latinoamerica-crecimiento-mexico-caida",
+    "title":  "Remittances to Latin America grow, but Mexico bucks the trend faced with the US slowdown",
+    "organization": "The World Bank"
+  },
+  {
+    "country": "El Salvador",
+    "story": "\"Between my brothers and me — all of us here, working hard — we keep them alive,\" she told me. \"We pay our parents’ rent, food, medicines. Everything.\"",
+    "link": "http://www.nytimes.com/2013/05/16/opinion/arana-the-migrant-cash-lifeline.html",
+    "title":  "The Migrant Cash Lifeline",
+    "organization": "New York Times"
+  },
+  {
+    "country": "Guatemala",
+    "story": "As Marilú tried to get on [hopping a train as she migrated from Guatemala to the US], a drunken man kicked her down. Holding on with her hands, Marilú’s right leg was sucked in by the turning wheels of the train. Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.”",
+    "link": "http://pdba.georgetown.edu/CLAS%20RESEARCH/Working%20Papers/WP2.pdf",
+    "title":  "Trans-Mexican Migration: a Case of Structural Violence",
+    "organization": "Georgetown University Center for Latin American Studies"
+  },
+  {
+    "country": "Haiti",
+    "story": "In an interview with 10 secondary-school students currently attending a private institution, the majority said that remittances were responsible for the payment of their fees. According to the students, these remittances are primarily from uncles and aunts in Canada and the US. Their parents, still in Haiti, earn far too little to afford to keep them in school. At the time of the hurricane, the relatives who were supporting them sent extra money for the families. One girl, though, reported that her parents confronted a dilemma because the amount sent was not sufficient to repair their badly damaged home and to cover school fees. Thus, they postponed the repairs. Others in the room nodded in agreement, indicating that their families faced similar choices.",
+    "link": "http://www.odi.org.uk/sites/odi.org.uk/files/odi-assets/publications-opinion-files/412.pdf",
+    "title":  "Remittances in crises: A Haiti case study",
+    "organization": "Overseas Development Institute"
+  },
+  {
+    "country": "India",
+    "story": "Ali Imam remembers a poor woman whom he used to give one or two-rupee coins occasionally as charity. \"She came to my shop after having been absent for some six months and I took out a coin for her,\" he says. \"She looked me in the eye for the first time and said, 'Babu ab ye nahin chahiye, mere do bete Arab ko gaye (I do not need this now, my two sons have gone to the Gulf).\"",
+    "link": "http://businesstoday.intoday.in/story/siwan-gopalganj-new-hotspots-for-remittances-from-west-asia/1/191191.html",
+    "title":  "A Riyal Revolution",
+    "organization": "Business Today"
+  },
+  {
+    "country": "Liberia",
+    "story": "\"It's a large family – cousins, aunts, uncles, nieces and nephews – so we have to spend the money wisely,\" says the businesswoman, who distributes the cash to relatives. \"I help my dad care for the family.\" She says the family would struggle without the cash. \"Instead of two meals a day, we'd just have one.\"",
+    "link": "http://www.theguardian.com/global-development/2013/jan/30/liberia-invest-remittances-everyday-needs",
+    "title":  "Liberia urged to invest remittances, not just spend them on everyday needs",
+    "organization": "The Guardian"
+  },
+  {
+    "country": "Pakistan",
+    "story": "One of the more important uses of remittances before the earthquake was in the construction of houses using cement mortar. Over half of non-recipients were living in houses constructed with stone masonry either loose or set in earth (mud), whereas almost all remittance recipients lived in houses built with cement mortar, which seemed to withstand the earthquake better. Most loose or earth-set masonry homes in the villages we looked at were completely destroyed, while many of the cement- mortar houses, although damaged, were still standing.1 After the earthquake, many remittance households only needed to repair their homes, rather than entirely rebuild them, while their access to remittance money has made remedial work much easier than for other households.",
+    "link": "http://www.odi.org.uk/sites/odi.org.uk/files/odi-assets/publications-opinion-files/385.pdf",
+    "title":  "Remittances in crises: a case study from Pakistan",
+    "organization": "Overseas Development Institute"
+  },
+  {
+    "country": "Philippines",
+    "story": "Ms. Ramos’s salary is paying to put her daughter, 17, and son, 14, through school in the Philippines. It also provides living expenses for them and for her two ailing parents.",
+    "link": "http://www.nytimes.com/2013/06/27/world/middleeast/women-fuel-rise-in-remittances-from-the-gulf.html?_r=0",
+    "title":  "Women Fuel Rise in Remittances From the Gulf",
+    "organization": "New York Times"
+  },
+  {
+    "country": "Somalia",
+    "story": "It was through them [remittances] that we rebuilt our family home in the early 1990s after the war had reduced it to a roofless ruin, and through them that my extended family was able to return from the refugee camps in Ethiopia and re-establish its life.",
+    "link": "http://www.theguardian.com/commentisfree/2013/aug/07/somalis-money-transfers-barclays-lifeline",
+    "title":  "Somalis rely on money transfers. Barclays, don't sever this lifeline",
+    "organization": "The Guardian"
+  },
+  {
+    "country": "Sri Lanka",
+    "story": "Mr. R.A. Ajith Asoka is a young father of two children (eight and two years old). Mr Asoka migrated to the Middle East to work as a driver, through an employment agency located in Colombo. Mr Asoka sent SLRs25,000 once every two months to his family through a bank account. He occasionally used Western Union when the need for money was urgent, as when he was building a house and when his daughter was in hospital. His house was flooded and partially damaged by the tsunami. The money in the bank account from his earnings was extremely useful to the family in renting a house after the tsunami.",
+    "link": "http://www.odi.org.uk/sites/odi.org.uk/files/odi-assets/publications-opinion-files/64.pdf",
+    "title":  "Remittances in crises: Sri Lanka after the tsunami",
+    "organization": "Overseas Development Institute"
+  },
+  {
+    "country": "Uganda",
+    "story": "I used to send money to my siblings and my mother. It successfully paid for three of them to go through university. Once they were finished with school, I transitioned to investing in the community by investing in socially conscious businesses. I am happy to say my remittances helped found Uganda Medicinal Plant Growers (Ltd). All three siblings have jobs and are productive members of society. One of them is on a mission to transform the education system in Uganda by starting his own school deep in a village, where quality education is lacking. That’s a benefit to the community I didn’t foresee.",
+    "link": "http://africansinthediaspora.org/blog/in-your-own-words-my-remittance-story-tms-ruge/",
+    "title":  "In Your Own Words: My Remittance Story– TMS Ruge",
+    "organization": "Africans in the Diaspora"
+  },
+  {
+    "country": "Bangladesh ",
+    "story": "\"Our passports had been taken by the recruiters. We had no papers and no money to pay fines or bribes. The guards openly told us that we would spend the rest of our lives in prison,\" Mia says.",
+    "link": "http://www.theguardian.com/global-development/2013/jan/07/debts-bangladeshi-migrants-jailed-abroad",
+    "title":  "Debts, dreams and middle men haunt Bangladeshi migrants jailed abroad",
+    "organization": "The Guardian"
+  }
+]
