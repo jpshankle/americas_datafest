@@ -1,12 +1,14 @@
 <div class="row" ng-hide="countries.selectedCountry.name">
   <div class="col-md-12">
-    <h1 class="text-center">Give Me The Numbers</h1>
+    <span class="pull-left"><h4><a href="javascript:history.back()" class="icon-link"><i class="icon-double-angle-left"></i></a></h4></span>
+    <h1 class="text-center">See The Numbers</h1>
     <p>Get cost information for a country using the map or typing in the search box.</p>
   </div>
 </div>
 <div ng-show="countries.selectedCountry.name">
   <div class="row">
     <div class="col-md-12">
+      <span class="pull-left"><h4><a href="javascript:history.back()" class="icon-link"><i class="icon-double-angle-left"></i></a></h4></span>
       <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
     </div>
   </div>

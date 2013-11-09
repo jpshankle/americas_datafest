@@ -1,10 +1,10 @@
-app.directive('d3Globe', ['$rootScope',
-    function($rootScope) {
+app.directive('d3Globe', ['$rootScope', '$timeout',
+    function($rootScope, $timeout) {
         return {
             restrict: 'E',
             template: '<div class="globeElement"></div>',
             scope: {
-                countries: '='
+                playTour: '='
             },
             link: function(scope, element, attrs) {
 
@@ -137,8 +137,27 @@ app.directive('d3Globe', ['$rootScope',
                                 .style("top", (d3.event.pageY - 15) + "px");
                         });;
 
-                    d3.select("select").on("change", selectCountry);
+                    var globeTour, tourIndex = 0, tourCountries = [840, 818, 56, 368, 388];
 
+				    function startTour(interval) {
+				        globeTour = $timeout(function() {
+				        	console.log("starting tour");
+				            if (scope.playTour === true) {
+				            	if (tourIndex > tourCountries.length) tourIndex = 0;
+				                selectCountry({value: tourCountries[tourIndex]});
+				                tourIndex++;
+				            } else {
+				                $timeout.cancel(globeTour);
+				            }                
+				        }, interval);
+				    };
+				    
+				    function stopTour() {
+				        $timeout.cancel(globeTour);
+				    };
+
+				    startTour(2500);
+				    
                     function selectCountry(c) {
                         var item = (typeof c === 'undefined') ? this : d3.select(c)[0][0];
                         var itemId = (item.value) ? item.value : item.id;
@@ -183,6 +202,8 @@ app.directive('d3Globe', ['$rootScope',
                 };
 
                 d3.select(window).on('resize', resize);
+
+                scope.startTour(2500);
 
                 function resize() {
 
