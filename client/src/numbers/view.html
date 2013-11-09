@@ -1,43 +1,50 @@
-<div class="row" ng-hide="countries.selectedCountry.name">
-  <div class="col-md-12">
-    <span class="pull-left"><h4><a href="javascript:history.back()" class="icon-link"><i class="icon-double-angle-left"></i></a></h4></span>
-    <h1 class="text-center">See The Numbers</h1>
-    <p>Get cost information for a country using the map or typing in the search box.</p>
+<div class="row">
+  <div class="col-md-3">
+    <a href="" ng-click="backButton()" class="icon-link icon-link-arrows"><i class="icon-double-angle-left"></i></a>
+  </div>
+  <div class="col-md-6 text-center">
+    <h4>See The Numbers</h4>
   </div>
 </div>
-<div ng-show="countries.selectedCountry.name">
-  <div class="row">
+  <div class="row immiviz-sidebar-view-content" ng-hide="countries.selectedCountry.name">
     <div class="col-md-12">
-      <span class="pull-left"><h4><a href="javascript:history.back()" class="icon-link"><i class="icon-double-angle-left"></i></a></h4></span>
-      <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+        <h1 class="text-center">Choose A Country</h1>
+        <p>Get cost information for a country using the map or typing in the search box.</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="numbers-stat text-center">
-        <div class="numbers-stat-number">$8.49</div>
-        <div class="numbers-stat-info">Average Transaction Cost</div>
+  <div ng-show="countries.selectedCountry.name">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="numbers-stat text-center">
-        <div class="numbers-stat-number">12%</div>
-        <div class="numbers-stat-info">% Living on less than $1.25 a Day</div>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-        <div class="numbers-stat">
-          <div class="rice">
-          <span ng-repeat="r in numberOfItems(rice) track by $index">
-            <i class="icon-food"></i>
-            <br ng-if="($index + 1) % 5 == 0">
-          </span>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="numbers-stat text-center">
+          <div class="numbers-stat-number">$8.49</div>
+          <div class="numbers-stat-info">Average Transaction Cost</div>
         </div>
-        <div class="numbers-stat-info text-center">Kg of Rice Per Transaction Cost</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="numbers-stat text-center">
+          <div class="numbers-stat-number">12%</div>
+          <div class="numbers-stat-info">% Living on less than $1.25 a Day</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <div class="numbers-stat">
+            <div class="rice">
+            <span ng-repeat="r in numberOfItems(rice) track by $index">
+              <i class="icon-food"></i>
+              <br ng-if="($index + 1) % 5 == 0">
+            </span>
+          </div>
+          <div class="numbers-stat-info text-center">Kg of Rice Per Transaction Cost</div>
+        </div>
       </div>
     </div>
   </div>

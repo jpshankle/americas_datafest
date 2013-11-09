@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html ng-app="immiviz">
-<head>
+  
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="rickshaw.min.css">
     <link rel="stylesheet" href="main.css">
     <title>ImmiViz</title>
-</head>
-<body>
-    <a class="app-logo" href="/#!/"><i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span></a>
+  </head>
+  
+  <body ng-controller="AppCtrl" ng-cloak>
+    <a class="app-logo" href="/#!/">
+      <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
+    </a>
     <div id="immiviz-container">
       <div class="row">
         <div class="immiviz-globe-spaceholder col-md-8">
@@ -18,28 +22,45 @@
           <d3-globe></d3-globe>
         </div>
         <div id="immiviz-content" class="col-md-4">
-          <div class="row">
+          <div class="row" ng-class="immivizContentAnimateClass">
             <div class="col-md-12 immiviz-content-ngview" ng-view></div>
           </div>
-          <div class="row">
-    <div class="col-md-12">
-        <h4 class="text-center">Spread the word</h4>
-        <div class='text-center shareIconsContainer'>
-            <span class='st_facebook_large' displayText='Facebook'></span>
-            <span class='st_twitter_large' displayText='Tweet'></span>
-            <span class='st_googleplus_large' displayText='Google +'></span>
-            <span class='st_linkedin_large' displayText='LinkedIn'></span>
-            <span class='st_email_large' displayText='Email'></span>
+          <div id="immiviz-share">
+            <div class="immiviz-share-icons">
+              <a href="/#!/numbers">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/stories">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/data">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/about">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/about">
+                <i class="icon-lightbulb"></i>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-        </div>
-    </div>
-  </div>
     <script src="libs.js"></script>
     <script src="main.js"></script>
-    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript">
+      var switchTo5x = true;
+    </script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "f63ee9a9-39b4-4f67-a8bf-0d6c81d76e31", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-</body>
+    <script type="text/javascript">
+      stLight.options({
+        publisher: "f63ee9a9-39b4-4f67-a8bf-0d6c81d76e31",
+        doNotHash: false,
+        doNotCopy: false,
+        hashAddressBar: false
+      });
+    </script>
+  </body>
+
 </html>

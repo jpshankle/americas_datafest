@@ -18,8 +18,8 @@
   "dependencies": {
     "angular": "~1.2.*",
     "d3": "~3.3.9",
-    "bootstrap": "~3.0.1",
+    "bootstrap": "~3.0.*",
     "angular-resource": "~1.2.*",
-    "angular-route": "~1.2.0-rc.3"
+    "angular-route": "~1.2.*"
   }
 }

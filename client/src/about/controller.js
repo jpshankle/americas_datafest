@@ -1,3 +1,3 @@
-app.controller('AboutCtrl', ['$scope', '$http', function ($scope, $http) {
-    
+app.controller('AboutCtrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+	$rootScope.immivizContentAnimateClass = 'back-button';
 }]);

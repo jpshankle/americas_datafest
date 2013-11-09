@@ -25,10 +25,6 @@ app.config(['$locationProvider','$routeProvider', function($locationProvider, $r
             controller: 'StoriesCtrl',
             templateUrl: '/stories/view.html'
         })
-        .when('/data', {
-            controller: 'DataCtrl',
-            templateUrl: '/data/view.html'
-        })
         .otherwise('/');
 }]);
 
@@ -36,5 +32,12 @@ app.run(['$rootScope', function ($rootScope) {
     $rootScope.countries={
         selectedCountry: {},
         countryData: {}
+    };
+}]);
+
+app.controller('AppCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
+    $rootScope.immivizContentAnimateClass = 'back-button';
+    $scope.backButton = function (direction) {
+        window.history.back();
     };
 }]);
