@@ -8,19 +8,20 @@ app.controller('NumbersCtrl', ['$scope', '$http', '$rootScope', function ($scope
     }).success(function(data) {
       $rootScope.$watch('countries.selectedCountry', function() {
         var costs;
-        console.log($rootScope.countries.selectedCountry);
         if ($rootScope.countries.selectedCountry) {
           costs = data['x' + $rootScope.countries.selectedCountry.id];
           if (costs) {
             $scope.averageCost = costs.fee;
             var numberInExtremePoverty = Math.floor(costs.people);
             $scope.numberLivingInExtremePovertyForCost = new Array(numberInExtremePoverty);
-          }
-          // $scope.pieDataArray = [
-          //   100 - $rootScope.countries.selectedCountry.costPercent,
-          //   $rootScope.countries.selectedCountry.costPercent
-          // ];
-          
+
+            var roundedAverage = Math.round(costs.average);
+
+            $scope.pieDataArray = [
+              100 - roundedAverage,
+              roundedAverage
+            ];
+          }     
         }
       }, true);
     });

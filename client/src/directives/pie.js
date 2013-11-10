@@ -21,8 +21,8 @@ app.directive('pieChart', [function () {
 
                         scope.$watchCollection('lines', function (newValues, oldValues) {
                           var svg = d3.select("body").append("svg")
-                                .attr("width", width)
-                                .attr("height", height)
+                                .attr("width", wh)
+                                .attr("height", wh)
                                 .append("g")
                                 .attr("transform", "translate(" + radius + "," + radius + ")"),
                               g = svg.selectAll('.arc')

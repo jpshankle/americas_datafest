@@ -4,7 +4,6 @@ var map = require('./routes/map');
 var about = require('./routes/about');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
 
 var app = express();
 

@@ -1,7 +1,7 @@
 app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
     $rootScope.immivizContentAnimateClass = 'back-button';
     d3.selectAll('.globeElement').selectAll('.active').classed('active', false);
-    $rootScope.countries.selectedCountry = null;
+
     $http({
     	method: 'GET',
     	url: '/data/stories.json'
