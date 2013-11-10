@@ -82,5 +82,40 @@
     "link": "http://www.theguardian.com/global-development/2013/jan/07/debts-bangladeshi-migrants-jailed-abroad",
     "title":  "Debts, dreams and middle men haunt Bangladeshi migrants jailed abroad",
     "organization": "The Guardian"
+  },
+  {
+    "country": "Tajikistan",
+    "story": "A young Tajik at a bazaar near Dushanbe shuddered when describing his three years as a taxi driver in St Petersburg. There, he preferred working nights so that police would not notice his darker skin. Yet he was home only briefly, to find a wife, and will soon leave his bride for more work. \"Without Russia, we’d die.\"",
+    "link": "http://www.economist.com/news/asia/21584999-russia-attempts-draw-tajikistan-and-kyrgyzstan-back-its-orbit-remittance-man",
+    "title":  "Remittance man",
+    "organization": "The Economist"
+  },
+  {
+    "country": "Kyrgyzstan",
+    "story": "\"I feed not only my family, I have two daughters and a small son, but also my aged parents, who live in the country,\" Ainura said",
+    "link": "http://www.irinnews.org/printreport.aspx?reportid=33713",
+    "title":  "Kyrgyzstan: Passport problem strangling labour migration",
+    "organization": "IRIN"
+  },
+  {
+    "country": "Zimbabwe",
+    "story": "\"I’ve got a house there and I need to pay rent. I’m also taking care of my youngest brother - since my mum died four years ago - and my wife’s family.\"",
+    "link": "http://www.irinnews.org/report/97557/african-migrants-pay-high-prices-to-send-money-home",
+    "title":  "African migrants pay high prices to send money home",
+    "organization": "IRIN"
+  },
+  {
+    "country": "Nepal",
+    "story": "Ahmad, a migrant worker from Nepal, who migrated to the Gulf told me \"even my work is tough and being away from my family, I have to keep working abroad to support my family.\" His wife was pragmatic: \"We hope to have family reunited in the future. But for now, we need to find a way to get income.\"",
+    "link": "http://weblog.iom.int/blog/2013/05/20/money-across-miles",
+    "title":  "Money across the miles",
+    "organization": "International Organization for Migration"
+  },
+  {
+    "country": "Peru",
+    "story": "I still keep in close contact with my family. I have gone a few times since I became a resident and I call my family often as well. I definitely have helped them economically and they know that I support them in whatever they need. They don’t like to worry me and tell me their problems but I’m always there for them. My children always received gifts. I always sent their father money to provide for them and keep them happy. They received clothes, toys, school materials and much more.",
+    "link": "http://migrationstory.org/Katty_Gonzalez.html",
+    "title":  "Katty Gonzalez",
+    "organization": "Migration Story, California State University East Bay"
   }
 ]
