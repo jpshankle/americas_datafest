@@ -1,41 +1,41 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-sm-3">
     <back-button></back-button>
   </div>
-  <div class="col-md-6 text-center">
+  <div class="col-sm-6 text-center">
     <h4>Learn Their Stories</h4>
   </div>
 </div>
 
 <div class="row immiviz-sidebar-view-content" ng-hide="countries.selectedCountry.name">
-  <div class="col-md-12">
+  <div class="col-sm-12">
     <h1 class="text-center">Choose A Story</h1>
     <p>What impact do remittances have on the people and communities who receive them? Click on a highlighted country to find out more about the human side of remittances.</p>
   </div>
 </div>
 <div class="row immiviz-sidebar-view-content" ng-show="countries.selectedCountry.name">
   <div class="row immiviz-sidebar-view-content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h1 class="text-center" class="forward-button">{{story.country}}</h1>
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <img class="story-img" src="{{story.img}}">
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <p class="story-story">{{story.story}}</p>
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h3><a href="{{story.link}}" target="_blank">{{story.title}}</a></h3>
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <p class="story-organization">{{story.organization}}</p>
     </div>
   </div>
