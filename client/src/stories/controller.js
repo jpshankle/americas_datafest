@@ -25,10 +25,7 @@ app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', '_', function ($
 	    	if (story) {
 	    		$scope.story = story;
 	    	} else {
-	    		$scope.story = {
-	    			country: 'Not Found',
-	    			story: 'Sorry but we do not have a story for that country at this time.'
-	    		}
+	    		$scope.story = null;
 	    	}
           }
 	    }, true);
