@@ -34,10 +34,3 @@ app.run(['$rootScope', function ($rootScope) {
         countryData: {}
     };
 }]);
-
-app.controller('AppCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
-    $rootScope.immivizContentAnimateClass = 'back-button';
-    $scope.backButton = function (direction) {
-        window.history.back();
-    };
-}]);

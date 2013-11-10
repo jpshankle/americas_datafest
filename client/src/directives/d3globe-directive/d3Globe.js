@@ -135,7 +135,7 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                         .on("mousemove", function(d) {
                             countryTooltip.style("left", (d3.event.pageX + 7) + "px")
                                 .style("top", (d3.event.pageY - 15) + "px");
-                        });;
+                        });
 
                     var globeTour, tourIndex = 0, tourCountries = [840, 818, 56, 368, 388];
 
@@ -181,7 +181,6 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                                 .tween("rotate", function() {
                                     var r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
                                     return function(t) {
-                                        console.log();
                                         projection.rotate(r(t));
                                         svg.selectAll("path").attr("d", path)
                                             .classed("active", function(d, i) {
