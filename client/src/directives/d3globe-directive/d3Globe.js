@@ -1,5 +1,5 @@
-app.directive('d3Globe', ['$rootScope', '$timeout',
-    function($rootScope, $timeout) {
+app.directive('d3Globe', ['$rootScope', '$interval', '_',
+    function($rootScope, $interval, _) {
         return {
             restrict: 'E',
             template: '<div class="globeElement"></div>',
@@ -8,7 +8,14 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
             },
             link: function(scope, element, attrs) {
 
+            	var startTour = function(){}, 
+            		stopTour = function(){},
+            		globeTour, 
+            		tourIndex = 0, 
+            		tourCountries = [];
+
                 var globeElement = element.children('.globeElement'),
+                	title=d3.select('.countryTitle'),
                     vertBuffer = 30,
                     height = window.innerHeight - vertBuffer,
                     width = height,
@@ -16,7 +23,6 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                     sens = 0.25,
                     focused;
 
-                globeElement.empty();
                 d3.select(globeElement[0])
                     .style('width', width + 'px')
                     .style('height', height + 'px');
@@ -49,6 +55,7 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                             };
                         })
                         .on("drag", function() {
+                        	stopTour();
                             var rotate = projection.rotate();
                             projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
                             svg.selectAll("path").attr("d", path);
@@ -60,7 +67,10 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                 queue()
                     .defer(d3.json, "/world-110m.json")
                     .defer(d3.tsv, "/world-110m-country-names.tsv")
-                    .await(ready);
+                    .await(function(err, wd, cd){
+                    	ready(err, wd, cd);
+                    	startTour(4000);
+                    });
 
                 //Main function
 
@@ -68,6 +78,10 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
 
                     var countryById = {},
                         countries = topojson.feature(world, world.objects.countries).features;
+
+                 		tourCountries = _(countries).pluck('id').shuffle().value();
+
+                 		console.log(tourCountries);
                     var typeaheadData = [],
                         i, c, year, allCountriesData = {};
                     //Adding countries to select
@@ -104,6 +118,7 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
   						}
   					})
                     .on('typeahead:selected', function(event, selectedItem) {
+                    	stopTour();
                         selectCountry(selectedItem);
                         event.currentTarget.value = '';
                     });
@@ -118,7 +133,10 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                             return d.id;
                         })
                         .attr("d", path)
-                        .on("click", selectCountry)
+                        .on("click", function(item){
+                        	stopTour();
+                        	selectCountry(item);
+                        })
 
                     	//Mouse events
 	                    .on("mouseover", function(d) {
@@ -137,27 +155,26 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                                 .style("top", (d3.event.pageY - 15) + "px");
                         });
 
-                    var globeTour, tourIndex = 0, tourCountries = [840, 818, 56, 368, 388];
+                    
 
-				    function startTour(interval) {
-				        globeTour = $timeout(function() {
-				        	console.log("starting tour");
+				    startTour = function(interval) {
+				        globeTour = $interval(function() {
 				            if (scope.playTour === true) {
-				            	if (tourIndex > tourCountries.length) tourIndex = 0;
+				            	console.log("Auto Tour :: Selected Country (%d)",tourCountries[tourIndex]);
 				                selectCountry({value: tourCountries[tourIndex]});
 				                tourIndex++;
 				            } else {
+				            	console.log("Auto Tour :: Canceled Tour!");
 				                $timeout.cancel(globeTour);
 				            }                
-				        }, interval);
+				        }, interval, false);
 				    };
 				    
-				    function stopTour() {
-				        $timeout.cancel(globeTour);
+				    stopTour = function() {
+				    	title.classed('hidden', true);
+				        $interval.cancel(globeTour);
 				    };
-
-				    startTour(2500);
-				    
+  
                     function selectCountry(c) {
                         var item = (typeof c === 'undefined') ? this : d3.select(c)[0][0];
                         var itemId = (item.value) ? item.value : item.id;
@@ -171,13 +188,18 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                             id: itemId,
                             name: countryById[itemId]
                         };
-                        $rootScope.$apply();
+                        //$rootScope.$apply();
 
                         //Globe rotating
 
                         (function transition() {
                             d3.transition()
                                 .duration(2500)
+                                .each("start", function() {
+                                	console.log(title);
+						        	title.text(countryById[focusedCountry.id]);
+						        	title.classed('hidden', false);
+						        })
                                 .tween("rotate", function() {
                                     var r = d3.interpolate(projection.rotate(), [-p[0], -p[1]]);
                                     return function(t) {
@@ -201,8 +223,6 @@ app.directive('d3Globe', ['$rootScope', '$timeout',
                 };
 
                 d3.select(window).on('resize', resize);
-
-                scope.startTour(2500);
 
                 function resize() {
                     // adjust things when the window size changes

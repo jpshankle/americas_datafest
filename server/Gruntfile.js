@@ -29,7 +29,8 @@ module.exports = function (grunt) {
                     '../client/bower_components/bootstrap/js/popover.js',
                     '../client/bower_components/bootstrap/js/scrollspy.js',
                     '../client/bower_components/bootstrap/js/tab.js',
-                    '../client/bower_components/bootstrap/js/transition.js'
+                    '../client/bower_components/bootstrap/js/transition.js',
+                    '../client/bower_components/lodash/dist/lodash.min.js'
                 ],
                 dest: '../client/dist/libs.js'
             },
@@ -37,6 +38,7 @@ module.exports = function (grunt) {
                 src: [
                     '../client/src/main.js',
                     '../client/src/directives/**/*.js',
+                    '../client/src/services/**/*.js',
                     '../client/src/**/*.js'
                 ],
                 dest: '../client/dist/main.js'
@@ -45,7 +47,7 @@ module.exports = function (grunt) {
         less: {
             main: {
                 src: [
-                    '../client/src/main.less'
+                    '../client/src/less/main.less'
                 ],
                 dest: '../client/dist/main.css'
             }
@@ -61,8 +63,8 @@ module.exports = function (grunt) {
                     '**/*.gif',
                     '**/*.jpg',
                     '**/*.json',
-                    '*.tsv',
-                    '*.csv',
+                    '**/*.tsv',
+                    '**/*.csv',
                     '**/*.kml',
                     '**/*.eot',
                     '**/*.svg',

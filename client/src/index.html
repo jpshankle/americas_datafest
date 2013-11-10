@@ -8,46 +8,49 @@
     <title>ImmiViz</title>
     <meta name="google-translate-customization" content="68768952a6a7c862-44182743b6d95a00-g583a1a438cbea101-f"></meta>
   </head>
-  
-  <body ng-cloak>
-    <a class="app-logo" href="/#!/">
-      <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
-    </a>
+  <body>
     <div id="immiviz-container">
       <div class="row">
         <div class="immiviz-globe-spaceholder col-md-8">
-          <div class="pull-right countrySelector">
-            <input class="form-control typeahead" type="search" placeholder="Search for Country">
-          </div>
-          </a>
-          <d3-globe></d3-globe>
+            <a class="app-logo" href="/#!/">
+              <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
+            </a>
+            <div class="pull-right countrySelector">
+                <input class="form-control typeahead" type="search" placeholder="Search for Country">
+            </div>
+            <div class="countryTitle hidden"></div>
+            <d3-globe play-tour=true></d3-globe>
         </div>
         <div id="immiviz-content" class="col-md-4">
-            <div class="row" ng-class="immivizContentAnimateClass">
-                <div class="col-md-12 immiviz-content-ngview" ng-view></div>
+          <div class="row" ng-class="immivizContentAnimateClass">
+            <div class="col-md-12 immiviz-content-ngview" ng-view></div>
+          </div>
+          <div id="immiviz-share" class="row">
+            <div class="immiviz-share-icons">
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_email_large' displayText='Email'></span>
+                <!--
+              <a href="/#!/numbers">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/stories">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/data">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/about">
+                <i class="icon-lightbulb"></i>
+              </a>
+              <a href="/#!/about">
+                <i class="icon-lightbulb"></i>
+              </a>-->
+              <div id="google_translate_element" class="pull-right"></div>
             </div>
-            <div class="row">
-              <div id="immiviz-share btn-toolbar">
-                <div class="immiviz-share-icons">
-                  <a href="/#!/numbers">
-                    <i class="icon-lightbulb"></i>
-                  </a>
-                  <a href="/#!/stories">
-                    <i class="icon-lightbulb"></i>
-                  </a>
-                  <a href="/#!/data">
-                    <i class="icon-lightbulb"></i>
-                  </a>
-                  <a href="/#!/about">
-                    <i class="icon-lightbulb"></i>
-                  </a>
-                  <a href="/#!/about">
-                    <i class="icon-lightbulb"></i>
-                  </a>
-                  <div id="google_translate_element" class="pull-right"></div>
-                </div>
-              </div>
-            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,6 +61,9 @@
     </script>
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
     <script type="text/javascript">
+        stLight.domReady(function(){
+            console.log('buttons loaded!');
+        });
       stLight.options({
         publisher: "f63ee9a9-39b4-4f67-a8bf-0d6c81d76e31",
         doNotHash: false,
