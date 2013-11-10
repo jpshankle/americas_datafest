@@ -11,29 +11,36 @@
   <body>
     <div id="immiviz-container">
       <div class="row">
-        <div class="immiviz-globe-spaceholder col-sm-8">
-            <a class="app-logo" href="/#!/">
-              <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
-            </a>
-            <div class="pull-right countrySelector">
-                <input class="form-control typeahead" type="search" placeholder="Search for Country">
+        <div class="immiviz-globe-spaceholder col-md-8">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="app-logo" href="/#!/">
+                        <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
+                    </a>
+                    <div class="pull-right countrySelector">
+                        <input class="form-control typeahead" type="search" placeholder="Search for Country">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="pull-right tour-toggle">
+                        <a class="btn" ng-class="{true: 'btn-primary', false: 'btn-danger'}[!playTour]" ng-click="playTour = !playTour">{{!playTour && 'Start' || 'Stop'}} Tour</a>
+                    </div>
+                </div>
             </div>
             <div class="countryTitle hidden"></div>
             <d3-globe play-tour=true></d3-globe>
         </div>
-        <div id="immiviz-content" class="col-sm-4">
+        <div id="immiviz-content" class="col-md-4">
           <div class="row" ng-class="immivizContentAnimateClass">
-            <div class="col-sm-12 immiviz-content-ngview" ng-view></div>
+            <div class="col-md-12 immiviz-content-ngview" ng-view></div>
           </div>
-          <div id="immiviz-share" class="row">
-            <div class="immiviz-share-icons">
+          <div id="immiviz-share">
                 <span class='st_facebook_large' displayText='Facebook'></span>
                 <span class='st_googleplus_large' displayText='Google +'></span>
                 <span class='st_twitter_large' displayText='Tweet'></span>
                 <span class='st_linkedin_large' displayText='LinkedIn'></span>
                 <span class='st_email_large' displayText='Email'></span>
-                <div id="google_translate_element" class="pull-right"></div>
-            </div>
+              <div id="google_translate_element" class="pull-right"></div>
           </div>
         </div>
       </div>
