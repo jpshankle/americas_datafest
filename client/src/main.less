@@ -4,6 +4,7 @@
 @import "fonts.less";
 @import "colorbrewer.less";
 @import "bootstrap-typeahead.less";
+@import "translate.less";
 
 body {
   overflow: hidden;
@@ -59,12 +60,12 @@ body {
 .immiviz-sidebar-view-content {
   padding: 0 30px;
 }
-
+/*
 #immiviz-share .immiviz-share-icons {
   display: table;
   margin: auto;
 }
-
+*/
 .icon-link {
   display: inline-block;
   color: @lightBlue;
@@ -233,7 +234,7 @@ body {
     margin-right: 3px;
     top: -1px;
   }
-  position: fixed;
+  position: relative;
   text-decoration: none;
   top: 5px;
   left: 10px;

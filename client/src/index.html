@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="rickshaw.min.css">
     <link rel="stylesheet" href="main.css">
     <title>ImmiViz</title>
+    <meta name="google-translate-customization" content="68768952a6a7c862-44182743b6d95a00-g583a1a438cbea101-f"></meta>
   </head>
   
   <body ng-controller="AppCtrl" ng-cloak>
@@ -22,28 +23,31 @@
           <d3-globe></d3-globe>
         </div>
         <div id="immiviz-content" class="col-md-4">
-          <div class="row" ng-class="immivizContentAnimateClass">
-            <div class="col-md-12 immiviz-content-ngview" ng-view></div>
-          </div>
-          <div id="immiviz-share">
-            <div class="immiviz-share-icons">
-              <a href="/#!/numbers">
-                <i class="icon-lightbulb"></i>
-              </a>
-              <a href="/#!/stories">
-                <i class="icon-lightbulb"></i>
-              </a>
-              <a href="/#!/data">
-                <i class="icon-lightbulb"></i>
-              </a>
-              <a href="/#!/about">
-                <i class="icon-lightbulb"></i>
-              </a>
-              <a href="/#!/about">
-                <i class="icon-lightbulb"></i>
-              </a>
+            <div class="row" ng-class="immivizContentAnimateClass">
+                <div class="col-md-12 immiviz-content-ngview" ng-view></div>
             </div>
-          </div>
+            <div class="row">
+              <div id="immiviz-share btn-toolbar">
+                <div class="immiviz-share-icons">
+                  <a href="/#!/numbers">
+                    <i class="icon-lightbulb"></i>
+                  </a>
+                  <a href="/#!/stories">
+                    <i class="icon-lightbulb"></i>
+                  </a>
+                  <a href="/#!/data">
+                    <i class="icon-lightbulb"></i>
+                  </a>
+                  <a href="/#!/about">
+                    <i class="icon-lightbulb"></i>
+                  </a>
+                  <a href="/#!/about">
+                    <i class="icon-lightbulb"></i>
+                  </a>
+                  <div id="google_translate_element" class="pull-right"></div>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
@@ -61,6 +65,22 @@
         hashAddressBar: false
       });
     </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45597562-1', 'immiviz.org');
+      ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-45597562-1'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 
 </html>
