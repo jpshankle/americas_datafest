@@ -1,4 +1,4 @@
-app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', '_', function ($scope, $rootScope, $http, _) {
     $rootScope.immivizContentAnimateClass = 'back-button';
     d3.selectAll('.globeElement').selectAll('.active').classed('active', false);
 
@@ -7,6 +7,11 @@ app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', function ($scope
     	url: '/data/stories.json'
     }).success(function(data) {
     	$scope.stories = data;
+    	var countriesWithData = _.pluck($scope.stories, 'countryId');
+    	$rootScope.setTourCountries(countriesWithData);
+
+    	$rootScope.highlightCountries(countriesWithData)
+
 	    $rootScope.$watch('countries.selectedCountry', function() {
 	    	var i, storiesLength, story;
           if ($rootScope.countries.selectedCountry) {

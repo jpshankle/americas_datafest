@@ -7,9 +7,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 
             	var startTour = function(){}, 
             		stopTour = function(){},
-            		globeTour, 
-            		tourIndex = 0, 
-            		tourCountries = [];
+            		globeTour;
 
                 var globeElement = element.children('.globeElement'),
                 	title=d3.select('.countryTitle'),
@@ -72,11 +70,10 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                 //Main function
 
                 function ready(error, world, countryData) {
+                	$rootScope.countryById = {};
+                    var countries = topojson.feature(world, world.objects.countries).features;
 
-                    var countryById = {},
-                        countries = topojson.feature(world, world.objects.countries).features;
-
-                 		tourCountries = _(countries).pluck('id').shuffle().value();
+                 		$rootScope.tourCountries = _(countries).pluck('id').shuffle().value();
 
                     var typeaheadData = [],
                         i, c, year, allCountriesData = {};
@@ -91,7 +88,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                                 gdp: Math.random() * 10000
                             };
                         }
-                        countryById[d.id] = d.name;
+                        $rootScope.countryById[d.id] = d.name;
                         var newCountry = {
                             name: d.name,
                             value: d.id
@@ -136,7 +133,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 
                     	//Mouse events
 	                    .on("mouseover", function(d) {
-	                        countryTooltip.text(countryById[d.id])
+	                        countryTooltip.text($rootScope.countryById[d.id])
 	                            .style("left", (d3.event.pageX + 7) + "px")
 	                            .style("top", (d3.event.pageY - 15) + "px")
 	                            .style("display", "block")
@@ -156,8 +153,9 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 				    startTour = function(interval) {
 				        globeTour = $interval(function() {
 				            if ($rootScope.playTour === true) {
-				                selectCountry({value: tourCountries[tourIndex]});
-				                tourIndex++;
+				            	if ($rootScope.tourIndex === $rootScope.tourCountries.length) $rootScope.tourIndex = 0;
+				                selectCountry({value: $rootScope.tourCountries[$rootScope.tourIndex]});
+				                $rootScope.tourIndex++;
 				            }                
 				        }, interval, false);
 				    };
@@ -180,7 +178,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 
                         $rootScope.countries.selectedCountry = {
                             id: itemId,
-                            name: countryById[itemId]
+                            name: $rootScope.countryById[itemId]
                         };
                         //$rootScope.$apply();
 
@@ -190,7 +188,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                             d3.transition()
                                 .duration(2500)
                                 .each("start", function() {
-						        	title.text(countryById[focusedCountry.id]);
+						        	title.text($rootScope.countryById[focusedCountry.id]);
 						        	title.classed('hidden', false);
 						        })
                                 .tween("rotate", function() {
