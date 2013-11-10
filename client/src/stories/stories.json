@@ -15,10 +15,12 @@
   },
   {
     "country": "Guatemala",
-    "story": "As Marilú tried to get on [hopping a train as she migrated from Guatemala to the US], a drunken man kicked her down. Holding on with her hands, Marilú’s right leg was sucked in by the turning wheels of the train. Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.”",
+    "intro": "When hopping a train as she migrated from Guatemala to the US:",
+    "story": "As Marilú tried to get on, a drunken man kicked her down. Holding on with her hands, Marilú’s right leg was sucked in by the turning wheels of the train. Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.”",
     "link": "http://pdba.georgetown.edu/CLAS%20RESEARCH/Working%20Papers/WP2.pdf",
     "title":  "Trans-Mexican Migration: a Case of Structural Violence",
-    "organization": "Georgetown University Center for Latin American Studies"
+    "organization": "Georgetown University Center for Latin American Studies",
+    "img": "/images/stories/guatemala"
   },
   {
     "country": "Haiti",
@@ -60,7 +62,8 @@
     "story": "It was through them [remittances] that we rebuilt our family home in the early 1990s after the war had reduced it to a roofless ruin, and through them that my extended family was able to return from the refugee camps in Ethiopia and re-establish its life.",
     "link": "http://www.theguardian.com/commentisfree/2013/aug/07/somalis-money-transfers-barclays-lifeline",
     "title":  "Somalis rely on money transfers. Barclays, don't sever this lifeline",
-    "organization": "The Guardian"
+    "organization": "The Guardian",
+    "img": "/images/stories/somali.jpg"
   },
   {
     "country": "Sri Lanka",
@@ -74,7 +77,8 @@
     "story": "I used to send money to my siblings and my mother. It successfully paid for three of them to go through university. Once they were finished with school, I transitioned to investing in the community by investing in socially conscious businesses. I am happy to say my remittances helped found Uganda Medicinal Plant Growers (Ltd). All three siblings have jobs and are productive members of society. One of them is on a mission to transform the education system in Uganda by starting his own school deep in a village, where quality education is lacking. That’s a benefit to the community I didn’t foresee.",
     "link": "http://africansinthediaspora.org/blog/in-your-own-words-my-remittance-story-tms-ruge/",
     "title":  "In Your Own Words: My Remittance Story– TMS Ruge",
-    "organization": "Africans in the Diaspora"
+    "organization": "Africans in the Diaspora",
+    "img": "/images/stories/uganda.jpg"
   },
   {
     "country": "Bangladesh ",
@@ -88,21 +92,24 @@
     "story": "A young Tajik at a bazaar near Dushanbe shuddered when describing his three years as a taxi driver in St Petersburg. There, he preferred working nights so that police would not notice his darker skin. Yet he was home only briefly, to find a wife, and will soon leave his bride for more work. \"Without Russia, we’d die.\"",
     "link": "http://www.economist.com/news/asia/21584999-russia-attempts-draw-tajikistan-and-kyrgyzstan-back-its-orbit-remittance-man",
     "title":  "Remittance man",
-    "organization": "The Economist"
+    "organization": "The Economist",
+    "img": "/images/stories/tajikistan.jpg"
   },
   {
     "country": "Kyrgyzstan",
     "story": "\"I feed not only my family, I have two daughters and a small son, but also my aged parents, who live in the country,\" Ainura said",
     "link": "http://www.irinnews.org/printreport.aspx?reportid=33713",
     "title":  "Kyrgyzstan: Passport problem strangling labour migration",
-    "organization": "IRIN"
+    "organization": "IRIN",
+    "img": "/images/stories/kyrgyzstan.jpg"
   },
   {
     "country": "Zimbabwe",
     "story": "\"I’ve got a house there and I need to pay rent. I’m also taking care of my youngest brother - since my mum died four years ago - and my wife’s family.\"",
     "link": "http://www.irinnews.org/report/97557/african-migrants-pay-high-prices-to-send-money-home",
     "title":  "African migrants pay high prices to send money home",
-    "organization": "IRIN"
+    "organization": "IRIN",
+    "img": "/images/stories/zimbabwe.jpg"
   },
   {
     "country": "Nepal",
@@ -117,5 +124,12 @@
     "link": "http://migrationstory.org/Katty_Gonzalez.html",
     "title":  "Katty Gonzalez",
     "organization": "Migration Story, California State University East Bay"
+  },
+   {
+    "country": "Mexico",
+    "story": "\"Two years ago my niece was sending my sister about 2,000 pesos ($150) every two weeks. Nowadays, she can only send us 1,200, 1,500 pesos ($95-115),\" said Fuentes, whose voice quivered as he recalled the difficulties now faced by his family. \"They tell us that they can only work a few days a week when they used to work all week. My niece lost her job in an American family and now she is making piñatas to survive but it is nothing steady,\" Fuentes said.",
+    "link": "http://fusion.net/abc_univision/news/story/remittances-mexico-feels-pain-us-recession-17367",
+    "title":  "Remittances are Down and Mexico Feels the Pain",
+    "organization": "Fusion"
   }
 ]
