@@ -13,8 +13,8 @@ app.controller('NumbersCtrl', ['$scope', '$http', '$rootScope', function ($scope
           if (costs) {
             $scope.averageCost = costs.fee;
             $scope.averagePercent = costs.average;
-            var numberInExtremePoverty = Math.floor(costs.people);
-            $scope.numberLivingInExtremePovertyForCost = new Array(numberInExtremePoverty);
+            $scope.numberInExtremePoverty = Math.floor(costs.people);
+            $scope.numberLivingInExtremePovertyForCost = new Array($scope.numberInExtremePoverty);
           }     
         }
       }, true);
