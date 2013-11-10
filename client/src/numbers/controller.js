@@ -12,15 +12,9 @@ app.controller('NumbersCtrl', ['$scope', '$http', '$rootScope', function ($scope
           costs = data['x' + $rootScope.countries.selectedCountry.id];
           if (costs) {
             $scope.averageCost = costs.fee;
+            $scope.averagePercent = costs.average;
             var numberInExtremePoverty = Math.floor(costs.people);
             $scope.numberLivingInExtremePovertyForCost = new Array(numberInExtremePoverty);
-
-            var roundedAverage = Math.round(costs.average);
-
-            $scope.pieDataArray = [
-              100 - roundedAverage,
-              roundedAverage
-            ];
           }     
         }
       }, true);
