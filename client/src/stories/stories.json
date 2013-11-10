@@ -4,7 +4,8 @@
     "story": "Wendy is one of millions of Dominicans for whom remittances are a vital lifeline. With two sons and a retired mother to support, the monthly sum she recieves from her father in Miami helps her to pay her daily living costs: electricity, food and her sons’ schooling.",
     "link": "http://www.worldbank.org/en/news/feature/2013/10/04/remesas-latinoamerica-crecimiento-mexico-caida",
     "title":  "Remittances to Latin America grow, but Mexico bucks the trend faced with the US slowdown",
-    "organization": "The World Bank"
+    "organization": "The World Bank",
+    "img": "/images/stories/dr.jpg"
   },
   {
     "country": "El Salvador",
@@ -41,7 +42,8 @@
     "story": "\"It's a large family – cousins, aunts, uncles, nieces and nephews – so we have to spend the money wisely,\" says the businesswoman, who distributes the cash to relatives. \"I help my dad care for the family.\" She says the family would struggle without the cash. \"Instead of two meals a day, we'd just have one.\"",
     "link": "http://www.theguardian.com/global-development/2013/jan/30/liberia-invest-remittances-everyday-needs",
     "title":  "Liberia urged to invest remittances, not just spend them on everyday needs",
-    "organization": "The Guardian"
+    "organization": "The Guardian",
+    "img": "/images/stories/liberia.jpg"
   },
   {
     "country": "Pakistan",
