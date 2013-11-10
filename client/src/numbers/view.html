@@ -21,29 +21,28 @@
     <div class="row">
       <div class="col-md-12">
         <div class="numbers-stat text-center">
-          <div class="numbers-stat-number">${{cost}}</div>
+          <div class="numbers-stat-number">${{averageCost}}</div>
           <div class="numbers-stat-info">Average Transaction Cost</div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="numbers-stat text-center">
-          <div class="numbers-stat-number">{{percent}}%</div>
-          <div class="numbers-stat-info">% Living on less than $1.25 a Day</div>
-        </div>
+        <pie-chart pie-data="countries.selectedCountry.costPercent"></pie-chart>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-          <div class="numbers-stat">
-            <div class="rice">
-            <span ng-repeat="r in rice track by $index">
+        <div class="numbers-stat">
+          <div class="rice">
+            <span ng-repeat="n in numberLivingInExtremePovertyForCost track by $index">
               <i class="icon-food"></i>
               <br ng-if="($index + 1) % 5 == 0">
             </span>
           </div>
-          <div class="numbers-stat-info text-center">Kg of Rice Per Transaction Cost</div>
+          <div class="numbers-stat-info text-center">
+            Number of People in Extreme Poverty<br>
+            Living on the Transaction Cost Per Day</div>
         </div>
       </div>
     </div>

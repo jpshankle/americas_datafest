@@ -4,12 +4,15 @@ app.controller('NumbersCtrl', ['$scope', '$rootScope', function ($scope, $rootSc
 	$rootScope.immivizContentAnimateClass = 'back-button';
     $rootScope.$watch('countries.selectedCountry', function() {
       if ($rootScope.countries.selectedCountry) {
-    	function numberOfRiceIcons (items) {
-        	return new Array(items);
-    	}
-    	$scope.rice = numberOfRiceIcons(Math.ceil(Math.random()*10));
-    	$scope.percent = Math.ceil(Math.random()*100);
-    	$scope.cost = Math.ceil(Math.random()*10);
+        
+        $rootScope.countries.selectedCountry.costPercent = 10;
+        $scope.pieDataArray = [
+          100 - $rootScope.countries.selectedCountry.costPercent,
+          $rootScope.countries.selectedCountry.costPercent
+        ];
+        $scope.averageCost = $rootScope.countries.selectedCountry.costPercent * 2;
+        var numberInExtremePoverty = Math.floor($scope.averageCost / 1.25);
+        $scope.numberLivingInExtremePovertyForCost = new Array(numberInExtremePoverty);
       }
     }, true);
 }]);
