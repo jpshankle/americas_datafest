@@ -1,14 +1,13 @@
-app.directive('backButton', ['$rootScope', function($rootScope) {
+app.directive('backButton', ['$rootScope', '$location', function($rootScope, $location) {
   return {
       restrict: 'E',
       template: '<a href="" ng-click="backButton()" class="icon-link icon-link-arrows"><i class="icon-double-angle-left"></i></a>',
       link: function(scope, element, attrs) {
         scope.backButton = function () {
-          $rootScope.countries.selectedCountry = null;
-          d3.selectAll('.globeElement').selectAll('.active').classed('active', false)
-          window.history.back();
+          d3.selectAll('.globeElement').selectAll('.active').classed('active', false);
+          $rootScope.countries.selectedCountry = undefined;
+          $location.path('/');
         };
       }
   };
 }]);
-    

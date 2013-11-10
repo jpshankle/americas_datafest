@@ -58,6 +58,7 @@ module.exports = function (grunt) {
                 src: [
                     '**/*.html',
                     '**/*.png',
+                    '**/*.jpg',
                     '**/*.json',
                     '*.tsv',
                     '*.csv',
