@@ -12,10 +12,16 @@
         <p>Get cost information for a country using the map or typing in the search box.</p>
     </div>
   </div>
-  <div ng-show="countries.selectedCountry.name" class="forward-button">
-    <div class="row">
+  <div ng-show="countries.selectedCountry.name">
+    <div class="row" ng-hide="averageCost">
       <div class="col-md-12">
-        <h1 class="text-center" class="forward-button">{{countries.selectedCountry.name}}</h1>
+        <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+        <div class="numbers-stat-info text-center">Data not available at this time.</div>
+      </div>
+    </div>
+    <div class="row" ng-show="averageCost">
+      <div class="col-md-12">
+        <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
       </div>
     </div>
     <div class="row">
@@ -28,7 +34,6 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <pie-chart pie-data="pieDataArray"></pie-chart>
       </div>
     </div>
     <div class="row">

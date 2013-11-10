@@ -4,7 +4,7 @@ app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', function ($scope
     $rootScope.countries.selectedCountry = null;
     $http({
     	method: 'GET',
-    	url: '/stories/stories.json'
+    	url: '/data/stories.json'
     }).success(function(data) {
     	$scope.stories = data;
 	    $rootScope.$watch('countries.selectedCountry', function() {
