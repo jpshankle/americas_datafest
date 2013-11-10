@@ -5,38 +5,51 @@
 @import "colorbrewer.less";
 @import "bootstrap-typeahead.less";
 @import "translate.less";
+div.share-this {
+  color: @gray !important;
+  position: absolute !important;
+  right: 6px !important;
+  bottom: 5px !important;
+  span span {
+    display: block !important;
+    margin-bottom: 2px;
+  }
+  span span span.stLarge {
+    font-family: 'icomoon' !important;
+    position: relative !important;
+    top: 3px;
+    speak: none;
+    color: @lightBlue;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 30px;
+    display: block;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: none !important;
+    &:hover {
+      color: @darkBlue !important;
+    }
+  }
 
-span span span.stLarge {
-  font-family: 'icomoon' !important;
-  position: relative !important;
-  top: 3px;
-  speak: none;
-  color: #fff;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  font-size: 30px;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-image: none !important;
-}
-
-.st_facebook_large span span:before {
-  content: "\e61f" !important;
-}
-.st_googleplus_large span span:before {
-  content: "\e620" !important;
-}
-.st_twitter_large span span:before {
-  content: "\e622" !important;
-}
-.st_linkedin_large span span:before {
-  content: "\e621" !important;
-}
-.st_email_large span span:before {
-  content: "\e61d" !important;
+  .st_facebook_large span span:before {
+    content: "\e61f" !important;
+  }
+  .st_googleplus_large span span:before {
+    content: "\e620" !important;
+  }
+  .st_twitter_large span span:before {
+    content: "\e622" !important;
+  }
+  .st_linkedin_large span span:before {
+    content: "\e621" !important;
+  }
+  .st_email_large span span:before {
+    content: "\e61d" !important;
+  }
 }
 
 body {
@@ -79,18 +92,22 @@ body {
   //opacity: 0.95;
 }
 
-#immiviz-share {
-  font-size: 1.5em;
-  position: absolute;
-  width: 50%;
-  top:10px;
-  right: 15px;
-
-  margin-right: -25px;
+.immiviz-globe-spaceholder {
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  bottom: 0px !important;
+  padding: 5px !important;
 }
 
 .tour-toggle {
   margin-top: 5px;
+}
+
+.google-translate-widget {
+  position: absolute;
+  top: 10px;
+  right: -15px;
 }
 
 .immiviz-content-ngview {
@@ -101,8 +118,18 @@ body {
   bottom: 0;
 }
 
+h1 {
+    color: @gray-light !important;
+}
 .immiviz-sidebar-view-content {
   padding: 0 30px;
+  a {
+    color: @lightBlue !important;
+    &:hover {
+      color: @darkBlue !important;
+      text-decoration: none !important;
+    }
+  }
 }
 
 .immiviz-sidebar-top {
@@ -116,6 +143,10 @@ body {
     color: @darkBlue;
     text-decoration: none;
   }
+}
+
+.icon-link.icon-link-arrows {
+  margin-top: 12px;
 }
 
 .icon-link-arrows {
@@ -157,7 +188,12 @@ body {
 .back-button .ng-leave-active {
   left: -100%;
 }
-
+.search-toggle {
+  position: absolute !important;
+  left: 0px !important;
+  top: 0px !important;
+  right: 10px !important;
+}
 .countrySelector {
   position: relative;
   top: 10px;
@@ -184,12 +220,13 @@ body {
   z-index: 1035;
   position: relative;
   pointer-events: none;
-  margin-top: 30%;
+  margin-top: 23%;
   margin-left: auto;
   margin-right: auto;
   font-size: 14px;
   font-family: @font-family-base;
   max-width: @tooltip-max-width;
+  height: '100%';
   padding: 3px 8px;
   color: @tooltip-color;
   text-align: center;
@@ -250,7 +287,15 @@ body {
   display: table;
   margin: .5em auto .2em;
 }
-
+.legend {
+  color: @gray !important;
+  position: absolute !important;
+  left: 10px !important;
+  bottom: -5px !important;
+}
+.legend span {
+    margin-right: 3px;
+}
 .globeElement {
   position: absolute;
   top: 0;
@@ -312,7 +357,7 @@ body {
   }
   position: relative;
   text-decoration: none;
-  top: 1px;
+  top: 0px;
   left: 10px;
 	color: #000;
 	text-shadow: white 0.03em 0.03em 0.06em;
