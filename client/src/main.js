@@ -28,10 +28,27 @@ app.config(['$locationProvider','$routeProvider', function($locationProvider, $r
         .otherwise('/');
 }]);
 
-app.run(['$rootScope', function ($rootScope) {
+app.run(['$rootScope', '_', function ($rootScope, _) {
     $rootScope.countries={
         selectedCountry: {},
         countryData: {},
     };
+    $rootScope.countryById = {};
+    $rootScope.highlightCountries = function(countries) {
+        var countriesToHighlight = (!_.isEmpty(countries)) ? countries : [];
+        d3.select('.globeElement')
+            .select('svg')
+            .selectAll("path")
+            .classed('has-data', function(d, i){
+                return _.contains(countriesToHighlight, d.id);
+            });
+    }
     $rootScope.playTour = true;
+    $rootScope.tourCountries = [];
+    $rootScope.tourIndex = 0;
+    $rootScope.setTourCountries = function(countries) {
+        $rootScope.tourCountries = countries;
+        $rootScope.tourIndex = 0;
+    };
+    
 }]);
