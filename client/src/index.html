@@ -12,11 +12,20 @@
     <div id="immiviz-container">
       <div class="row">
         <div class="immiviz-globe-spaceholder col-md-8">
-            <a class="app-logo" href="/#!/">
-              <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
-            </a>
-            <div class="pull-right countrySelector">
-                <input class="form-control typeahead" type="search" placeholder="Search for Country">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a class="app-logo" href="/#!/">
+                        <i class="icon-lightbulb"></i>Immi<span class="viz">Viz</span>
+                    </a>
+                    <div class="pull-right countrySelector">
+                        <input class="form-control typeahead" type="search" placeholder="Search for Country">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="pull-right tour-toggle">
+                        <a class="btn" ng-class="{true: 'btn-primary', false: 'btn-danger'}[!playTour]" ng-click="playTour = !playTour">{{!playTour && 'Start' || 'Stop'}} Tour</a>
+                    </div>
+                </div>
             </div>
             <div class="countryTitle hidden"></div>
             <d3-globe play-tour=true></d3-globe>

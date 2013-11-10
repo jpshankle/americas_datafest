@@ -3,9 +3,6 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
         return {
             restrict: 'E',
             template: '<div class="globeElement"></div>',
-            scope: {
-                playTour: '='
-            },
             link: function(scope, element, attrs) {
 
             	var startTour = function(){}, 
@@ -81,7 +78,6 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 
                  		tourCountries = _(countries).pluck('id').shuffle().value();
 
-                 		console.log(tourCountries);
                     var typeaheadData = [],
                         i, c, year, allCountriesData = {};
                     //Adding countries to select
@@ -159,20 +155,18 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 
 				    startTour = function(interval) {
 				        globeTour = $interval(function() {
-				            if (scope.playTour === true) {
-				            	console.log("Auto Tour :: Selected Country (%d)",tourCountries[tourIndex]);
+				            if ($rootScope.playTour === true) {
 				                selectCountry({value: tourCountries[tourIndex]});
 				                tourIndex++;
-				            } else {
-				            	console.log("Auto Tour :: Canceled Tour!");
-				                $timeout.cancel(globeTour);
 				            }                
 				        }, interval, false);
 				    };
 				    
 				    stopTour = function() {
 				    	title.classed('hidden', true);
-				        $interval.cancel(globeTour);
+				    	$rootScope.playTour = false;
+				    	$rootScope.$apply();
+				        //$interval.cancel(globeTour);
 				    };
   
                     function selectCountry(c) {
@@ -196,7 +190,6 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                             d3.transition()
                                 .duration(2500)
                                 .each("start", function() {
-                                	console.log(title);
 						        	title.text(countryById[focusedCountry.id]);
 						        	title.classed('hidden', false);
 						        })

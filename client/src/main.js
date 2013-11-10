@@ -31,6 +31,7 @@ app.config(['$locationProvider','$routeProvider', function($locationProvider, $r
 app.run(['$rootScope', function ($rootScope) {
     $rootScope.countries={
         selectedCountry: {},
-        countryData: {}
+        countryData: {},
     };
+    $rootScope.playTour = true;
 }]);
