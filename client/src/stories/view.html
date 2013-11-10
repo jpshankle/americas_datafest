@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3">
-    <a href="" ng-click="backButton()" class="icon-link icon-link-arrows"><i class="icon-double-angle-left"></i></a>
+    <back-button></back-button>
   </div>
   <div class="col-md-6 text-center">
     <h4>Learn Their Stories</h4>
@@ -21,12 +21,17 @@
   </div>
   <div class="row immiviz-sidebar-view-content">
     <div class="col-md-12">
+      <img class="story-img" src="{{story.img}}">
+    </div>
+  </div>
+  <div class="row immiviz-sidebar-view-content">
+    <div class="col-md-12">
       <p class="story-story">{{story.story}}</p>
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">
     <div class="col-md-12">
-      <h3><a href="{{story.link}}">{{story.title}}</a></h3>
+      <h3><a href="{{story.link}}" target="_blank">{{story.title}}</a></h3>
     </div>
   </div>
   <div class="row immiviz-sidebar-view-content">

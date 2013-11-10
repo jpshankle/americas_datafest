@@ -4,7 +4,8 @@
     "story": "Wendy is one of millions of Dominicans for whom remittances are a vital lifeline. With two sons and a retired mother to support, the monthly sum she recieves from her father in Miami helps her to pay her daily living costs: electricity, food and her sons’ schooling.",
     "link": "http://www.worldbank.org/en/news/feature/2013/10/04/remesas-latinoamerica-crecimiento-mexico-caida",
     "title":  "Remittances to Latin America grow, but Mexico bucks the trend faced with the US slowdown",
-    "organization": "The World Bank"
+    "organization": "The World Bank",
+    "img": "/images/stories/dr.jpg"
   },
   {
     "country": "El Salvador",
@@ -15,10 +16,12 @@
   },
   {
     "country": "Guatemala",
-    "story": "As Marilú tried to get on [hopping a train as she migrated from Guatemala to the US], a drunken man kicked her down. Holding on with her hands, Marilú’s right leg was sucked in by the turning wheels of the train. Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.”",
+    "intro": "When hopping a train as she migrated from Guatemala to the US:",
+    "story": "As Marilú tried to get on, a drunken man kicked her down. Holding on with her hands, Marilú’s right leg was sucked in by the turning wheels of the train. Her partner carried her to the nearest clinic. “Lying in the hospital bed I told my partner he had to continue without me and reach the United States. I know that I can no longer work and sustain my family in Guatemala, so I count on him. For now I will stay helping in the shelter. I don’t know if I’ll go back to Guatemala, my children don’t know I lost my leg and I don’t want them to see me this way.”",
     "link": "http://pdba.georgetown.edu/CLAS%20RESEARCH/Working%20Papers/WP2.pdf",
     "title":  "Trans-Mexican Migration: a Case of Structural Violence",
-    "organization": "Georgetown University Center for Latin American Studies"
+    "organization": "Georgetown University Center for Latin American Studies",
+    "img": "/images/stories/guatemala.jpg"
   },
   {
     "country": "Haiti",
@@ -39,7 +42,8 @@
     "story": "\"It's a large family – cousins, aunts, uncles, nieces and nephews – so we have to spend the money wisely,\" says the businesswoman, who distributes the cash to relatives. \"I help my dad care for the family.\" She says the family would struggle without the cash. \"Instead of two meals a day, we'd just have one.\"",
     "link": "http://www.theguardian.com/global-development/2013/jan/30/liberia-invest-remittances-everyday-needs",
     "title":  "Liberia urged to invest remittances, not just spend them on everyday needs",
-    "organization": "The Guardian"
+    "organization": "The Guardian",
+    "img": "/images/stories/liberia.jpg"
   },
   {
     "country": "Pakistan",
@@ -60,7 +64,8 @@
     "story": "It was through them [remittances] that we rebuilt our family home in the early 1990s after the war had reduced it to a roofless ruin, and through them that my extended family was able to return from the refugee camps in Ethiopia and re-establish its life.",
     "link": "http://www.theguardian.com/commentisfree/2013/aug/07/somalis-money-transfers-barclays-lifeline",
     "title":  "Somalis rely on money transfers. Barclays, don't sever this lifeline",
-    "organization": "The Guardian"
+    "organization": "The Guardian",
+    "img": "/images/stories/somali.jpg"
   },
   {
     "country": "Sri Lanka",
@@ -74,7 +79,8 @@
     "story": "I used to send money to my siblings and my mother. It successfully paid for three of them to go through university. Once they were finished with school, I transitioned to investing in the community by investing in socially conscious businesses. I am happy to say my remittances helped found Uganda Medicinal Plant Growers (Ltd). All three siblings have jobs and are productive members of society. One of them is on a mission to transform the education system in Uganda by starting his own school deep in a village, where quality education is lacking. That’s a benefit to the community I didn’t foresee.",
     "link": "http://africansinthediaspora.org/blog/in-your-own-words-my-remittance-story-tms-ruge/",
     "title":  "In Your Own Words: My Remittance Story– TMS Ruge",
-    "organization": "Africans in the Diaspora"
+    "organization": "Africans in the Diaspora",
+    "img": "/images/stories/uganda.jpg"
   },
   {
     "country": "Bangladesh ",
@@ -82,5 +88,50 @@
     "link": "http://www.theguardian.com/global-development/2013/jan/07/debts-bangladeshi-migrants-jailed-abroad",
     "title":  "Debts, dreams and middle men haunt Bangladeshi migrants jailed abroad",
     "organization": "The Guardian"
+  },
+  {
+    "country": "Tajikistan",
+    "story": "A young Tajik at a bazaar near Dushanbe shuddered when describing his three years as a taxi driver in St Petersburg. There, he preferred working nights so that police would not notice his darker skin. Yet he was home only briefly, to find a wife, and will soon leave his bride for more work. \"Without Russia, we’d die.\"",
+    "link": "http://www.economist.com/news/asia/21584999-russia-attempts-draw-tajikistan-and-kyrgyzstan-back-its-orbit-remittance-man",
+    "title":  "Remittance man",
+    "organization": "The Economist",
+    "img": "/images/stories/tajikistan.jpg"
+  },
+  {
+    "country": "Kyrgyzstan",
+    "story": "\"I feed not only my family, I have two daughters and a small son, but also my aged parents, who live in the country,\" Ainura said",
+    "link": "http://www.irinnews.org/printreport.aspx?reportid=33713",
+    "title":  "Kyrgyzstan: Passport problem strangling labour migration",
+    "organization": "IRIN",
+    "img": "/images/stories/kyrgyzstan.jpg"
+  },
+  {
+    "country": "Zimbabwe",
+    "story": "\"I’ve got a house there and I need to pay rent. I’m also taking care of my youngest brother - since my mum died four years ago - and my wife’s family.\"",
+    "link": "http://www.irinnews.org/report/97557/african-migrants-pay-high-prices-to-send-money-home",
+    "title":  "African migrants pay high prices to send money home",
+    "organization": "IRIN",
+    "img": "/images/stories/zimbabwe.jpg"
+  },
+  {
+    "country": "Nepal",
+    "story": "Ahmad, a migrant worker from Nepal, who migrated to the Gulf told me \"even my work is tough and being away from my family, I have to keep working abroad to support my family.\" His wife was pragmatic: \"We hope to have family reunited in the future. But for now, we need to find a way to get income.\"",
+    "link": "http://weblog.iom.int/blog/2013/05/20/money-across-miles",
+    "title":  "Money across the miles",
+    "organization": "International Organization for Migration"
+  },
+  {
+    "country": "Peru",
+    "story": "I still keep in close contact with my family. I have gone a few times since I became a resident and I call my family often as well. I definitely have helped them economically and they know that I support them in whatever they need. They don’t like to worry me and tell me their problems but I’m always there for them. My children always received gifts. I always sent their father money to provide for them and keep them happy. They received clothes, toys, school materials and much more.",
+    "link": "http://migrationstory.org/Katty_Gonzalez.html",
+    "title":  "Katty Gonzalez",
+    "organization": "Migration Story, California State University East Bay"
+  },
+   {
+    "country": "Mexico",
+    "story": "\"Two years ago my niece was sending my sister about 2,000 pesos ($150) every two weeks. Nowadays, she can only send us 1,200, 1,500 pesos ($95-115),\" said Fuentes, whose voice quivered as he recalled the difficulties now faced by his family. \"They tell us that they can only work a few days a week when they used to work all week. My niece lost her job in an American family and now she is making piñatas to survive but it is nothing steady,\" Fuentes said.",
+    "link": "http://fusion.net/abc_univision/news/story/remittances-mexico-feels-pain-us-recession-17367",
+    "title":  "Remittances are Down and Mexico Feels the Pain",
+    "organization": "Fusion"
   }
 ]
