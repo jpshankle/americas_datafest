@@ -10,37 +10,39 @@
     <p>What impact do remittances have on the people and communities who receive them? Click on a highlighted country to find out more about the human side of remittances.</p>
   </div>
 </div>
-<div class="row immiviz-sidebar-view-content" ng-show="countries.selectedCountry.name">
-  <div class="row" ng-hide="story">
-      <div class="col-sm-12">
-        <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
-        <div class="numbers-stat-info text-center">No story is available at this time.</div>
+<div class="row" ng-show="countries.selectedCountry.name">
+  <div class="col-sm-12">
+    <div class="row" ng-hide="story">
+        <div class="col-sm-12">
+          <h1 class="text-center">{{countries.selectedCountry.name}}</h1>
+          <div class="numbers-stat-info text-center">No story is available at this time.</div>
+        </div>
       </div>
-    </div>
-  <div ng-show="story">
-    <div class="row immiviz-sidebar-view-content">
-      <div class="col-sm-12">
-        <h1 class="text-center" class="forward-button">{{story.country}}</h1>
+    <div ng-show="story">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="text-center" class="forward-button">{{story.country}}</h1>
+        </div>
       </div>
-    </div>
-    <div class="row immiviz-sidebar-view-content">
-      <div class="col-sm-12">
-        <img class="story-img" src="{{story.img}}">
+      <div class="row">
+        <div class="col-sm-12">
+          <img class="story-img" src="{{story.img}}">
+        </div>
       </div>
-    </div>
-    <div class="row immiviz-sidebar-view-content">
-      <div class="col-sm-12">
-        <p class="story-story">{{story.story}}</p>
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="story-story">{{story.story}}</p>
+        </div>
       </div>
-    </div>
-    <div class="row immiviz-sidebar-view-content">
-      <div class="col-sm-12">
-        <h3><a href="{{story.link}}" target="_blank">{{story.title}}</a></h3>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3><a href="{{story.link}}" target="_blank">{{story.title}}</a></h3>
+        </div>
       </div>
-    </div>
-    <div class="row immiviz-sidebar-view-content">
-      <div class="col-sm-12">
-        <p class="story-organization">{{story.organization}}</p>
+      <div class="row">
+        <div class="col-sm-12">
+          <p class="story-organization">{{story.organization}}</p>
+        </div>
       </div>
     </div>
   </div>
