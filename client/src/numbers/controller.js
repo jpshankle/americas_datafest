@@ -6,6 +6,14 @@ app.controller('NumbersCtrl', ['$scope', '$http', '$rootScope', function ($scope
       method: 'GET',
       url: '/data/country_data.json'
     }).success(function(data) {
+
+      var countriesWithData = _.map(data, function(value, key){
+          return parseInt(key.slice(1));
+      });
+      console.log(countriesWithData);
+      $rootScope.setTourCountries(countriesWithData);
+      $rootScope.highlightCountries(countriesWithData);
+
       $rootScope.$watch('countries.selectedCountry', function() {
         var costs;
         if ($rootScope.countries.selectedCountry) {

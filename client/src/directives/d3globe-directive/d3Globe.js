@@ -70,9 +70,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                 //Main function
 
                 function ready(error, world, countryData) {
-                	$rootScope.countryById = {};
                     var countries = topojson.feature(world, world.objects.countries).features;
-
                  		$rootScope.tourCountries = _(countries).pluck('id').shuffle().value();
 
                     var typeaheadData = [],
@@ -153,8 +151,20 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 				    startTour = function(interval) {
 				        globeTour = $interval(function() {
 				            if ($rootScope.playTour === true) {
-				            	if ($rootScope.tourIndex === $rootScope.tourCountries.length) $rootScope.tourIndex = 0;
-				                selectCountry({value: $rootScope.tourCountries[$rootScope.tourIndex]});
+				            	var nextCountryId = null, iterations = 0;
+
+				            	while ((nextCountryId === null) && (iterations < 20)) {
+				            		if ($rootScope.tourIndex === $rootScope.tourCountries.length) $rootScope.tourIndex = 0;
+				            		var cId = $rootScope.tourCountries[$rootScope.tourIndex];
+				            		if (!$rootScope.countryById[cId]) {
+				            			console.log("Invalid country code found: " + cId);
+				            			$rootScope.tourIndex = $rootScope.tourIndex + 1;
+				            			iterations = iterations + 1;
+				            		} else {
+				            			nextCountryId = cId;
+				            		}
+				            	}
+				                selectCountry({value: nextCountryId});
 				                $rootScope.tourIndex++;
 				            }                
 				        }, interval, false);
@@ -168,6 +178,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
 				    };
   
                     function selectCountry(c) {
+                    	console.log(c);
                         var item = (typeof c === 'undefined') ? this : d3.select(c)[0][0];
                         var itemId = (item.value) ? item.value : item.id;
                         var rotate = projection.rotate(),

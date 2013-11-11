@@ -7,10 +7,10 @@ app.controller('StoriesCtrl', ['$scope', '$rootScope', '$http', '_', function ($
     	url: '/data/stories.json'
     }).success(function(data) {
     	$scope.stories = data;
+    	
     	var countriesWithData = _.pluck($scope.stories, 'countryId');
     	$rootScope.setTourCountries(countriesWithData);
-
-    	$rootScope.highlightCountries(countriesWithData)
+    	$rootScope.highlightCountries(countriesWithData);
 
 	    $rootScope.$watch('countries.selectedCountry', function() {
 	    	var i, storiesLength, story;
