@@ -64,7 +64,7 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                     .defer(d3.tsv, "/world-110m-country-names.tsv")
                     .await(function(err, wd, cd){
                     	ready(err, wd, cd);
-                    	startTour(4000);
+                    	startTour(10000);
                     });
 
                 //Main function
@@ -149,10 +149,11 @@ app.directive('d3Globe', ['$rootScope', '$interval', '_',
                     
 
 				    startTour = function(interval) {
+		                selectCountry({value: $rootScope.tourCountries[$rootScope.tourIndex]});
+		                $rootScope.tourIndex++;
 				        globeTour = $interval(function() {
 				            if ($rootScope.playTour === true) {
 				            	var nextCountryId = null, iterations = 0;
-
 				            	while ((nextCountryId === null) && (iterations < 20)) {
 				            		if ($rootScope.tourIndex === $rootScope.tourCountries.length) $rootScope.tourIndex = 0;
 				            		var cId = $rootScope.tourCountries[$rootScope.tourIndex];
